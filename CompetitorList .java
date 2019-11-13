@@ -97,7 +97,7 @@ public class CompetitorList {
 				 report += String.format("%-12s", c.getCompName().getInitials());
 	    		 report += String.format("%-8.1s", c.getMaxScore());
 				 report += String.format("%-8.1s", c.getMinScore());
-				 report += String.format("%-8.2f", c.getAverageScore());
+				 report += String.format("%-8.2f", c.getOverallScore());
 				 report += String.format("%-8.2f", c.getTotals());
 				 report += "\n";
 	    	 }
@@ -111,8 +111,8 @@ public class CompetitorList {
 	  public double getWinnerAvg() {
 		double maxScore = 0;
 		  for (VCACompetitor c : competitorList) {
-			 if ( maxScore <= c.getAverageScore()) {
-				  maxScore = c.getAverageScore();
+			 if ( maxScore <= c.getOverallScore()) {
+				  maxScore = c.getOverallScore();
 			 }
 		  }
 		return maxScore;
@@ -125,7 +125,7 @@ public class CompetitorList {
 			 */
 	  public VCACompetitor getWinName() {
 		  for (VCACompetitor c : competitorList) {
-			  if (c.getAverageScore() == this.getWinnerAvg()) {
+			  if (c.getOverallScore() == this.getWinnerAvg()) {
 			 return c;
 			 }	
 			}
@@ -142,7 +142,7 @@ public class CompetitorList {
 				
 		  for (VCACompetitor c : competitorList) {
 			   if (c.getLevel() == level){
-			   if (c.getAverageScore() == this.getWinnerAvg()) {
+			   if (c.getOverallScore() == this.getWinnerAvg()) {
 			  return c;
 			  }
 			}
