@@ -1,28 +1,21 @@
+import java.util.Arrays;
 
 abstract public class Competitor {
 	
 	// instant variables 
 	private int compNumber;			// Competitor's Number 
 	private String compNameStart; 	// Competitor's Name 
-	private int level;				// Competitor's Level !!int?
-	private String scores;			// Competitor's scores !!string?
+	private String level;			// Competitor's Level 
+	private int[] scores;			// Competitor's scores 
 	
 	//Constructor 
-	public  Competitor(int CompetitorNumber, String CompetitorName, int CompetitorLevel, String Scores)
+	public  Competitor(int CompetitorNumber, String CompetitorName, String CompetitorLevel, int[] Scores)
 	{
 		this.compNumber = CompetitorNumber;
 		compNameStart = CompetitorName;
 		level = CompetitorLevel;
 		scores = Scores;
 		
-		try {									//Alter when level format formalised.
-			if (this.level > 4)
-				throw new Exception();
-		}
-		catch (Exception e){
-			String error = e + " Level is set too high.";
-			System.out.println(error);
-		}
 	}
 	
 	//Return Values 
@@ -30,14 +23,35 @@ abstract public class Competitor {
 		Name compName = new Name(compNameStart);
 		return compName;
 	} 
-	public String getCompetitorNumber(){			//This is assuming input is string 
-		return Integer.toString(compNumber);
+	public int getCompetitorNumber(){			
+		return compNumber;
 	}	
-	public String getLevel(){
-		return Integer.toString(level);				//This changes level output to string 
-	}
+	public int[] getScoreArray(){			
+		return scores;
+	}	
 	
+	//Unique methods
+	public abstract String getLevel();
 	public abstract double getOverallScore();
+	public abstract String getGender();
+	public abstract int getNumberOfWins();
+	public abstract String getNationality();
+	public abstract int getAge();
+	
+	//Details report; will be expanded later
+	public String getFullDetails() {
+		return "Level "+ getLevel()
+				+ " competitor "+ getCompName().getFullName()
+				+ " (Number " + compNumber + ")."
+				+ "\nThey recieved the scores - " + Arrays.toString(getScoreArray())
+				+ "; which gives an overall score of " 
+				+ String.valueOf(getOverallScore()) + ".";
+	}
+	public String getShortDetails() {
+		return "CN " + Integer.toString(getCompetitorNumber()) + " (" 
+				+ getCompName().getInitials() + ") who has overall score " 
+				+ String.valueOf(getOverallScore()) + ".";
+	}
 	
 
 }
