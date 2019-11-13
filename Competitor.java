@@ -29,9 +29,11 @@ abstract public class Competitor {
 	public int[] getScoreArray(){			
 		return scores;
 	}	
+	public String getLevel(){			
+		return level;
+	}
 	
 	//Unique methods
-	public abstract String getLevel();
 	public abstract double getOverallScore();
 	public abstract String getGender();
 	public abstract int getNumberOfWins();
