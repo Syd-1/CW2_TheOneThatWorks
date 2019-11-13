@@ -1,7 +1,7 @@
 
 public class STCompetitor {
 	
-	// instance variables
+	// instance variables Syd waz here ;)
 	private int CompID;
 	private Name name;
 	private String level;
