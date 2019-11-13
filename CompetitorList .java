@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;  
 
 
-public class VCACompetitorList {
+public class CompetitorList {
 	
 	private ArrayList<VCACompetitor> vcaCompetitorList;
 			
