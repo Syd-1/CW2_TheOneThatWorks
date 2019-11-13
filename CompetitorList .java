@@ -11,12 +11,12 @@ import java.util.Scanner;
 
 public class CompetitorList {
 	
-	private ArrayList<VCACompetitor> vcaCompetitorList;
+	private ArrayList<VCACompetitor> CompetitorList;
 			
-	public VCACompetitorList() {
-		vcaCompetitorList = new ArrayList<VCACompetitor> (); }
+	public CompetitorList() {
+		competitorList = new ArrayList<VCACompetitor> (); }
 	
-	public void add(VCACompetitor c) {vcaCompetitorList.add(c); }
+	public void add(VCACompetitor c) {competitorList.add(c); }
 	/**
 	 * Adds vcacompetitor to the list, if there is not already one there
 	 * with the same ID
@@ -29,7 +29,7 @@ public class CompetitorList {
 		int CN = c.getCompNumber();
 		VCACompetitor inList = this.findByCompNumber(CN);
 		if (inList == null) {
-			vcaCompetitorList.add(c);
+			competitorList.add(c);
 			return true;
 			}
 		return false;
@@ -44,7 +44,7 @@ public class CompetitorList {
 	public String getTableOfVCACompetitors() {
 				String report = "CN    NAME                        NATIONALITY        LEVEL        SCORES       \n";
 				
-				for (VCACompetitor c  : vcaCompetitorList) {
+				for (VCACompetitor c  : competitorList) {
 					report += String.format("");
 					report += String.format("%-4s", c.getCompNumber());
 					report += String.format("%-30s", c.getCompName().getFullName());
@@ -63,7 +63,7 @@ public class CompetitorList {
 		     */
 	 public String getFullInfo(){
 	   String report = "FULL DETAILS OF THE COMPETITORS \n";
-	   for (VCACompetitor c : vcaCompetitorList) {
+	   for (VCACompetitor c : competitorList) {
 	     report += String.format("%-100s", c.getFullDetails());
 	     report += "\n";
 	    }
@@ -76,7 +76,7 @@ public class CompetitorList {
 		     */
 	  public String getShortInfo(){
 	    String report = "SHORT DETAILS OF THE COMPETITORS \n";
-	    for (VCACompetitor c : vcaCompetitorList) {
+	    for (VCACompetitor c : competitorList) {
 	     report += String.format("%-50s", c.getShortDetails());
 	     report += "\n";
 	    }
@@ -91,7 +91,7 @@ public class CompetitorList {
 	    	 
 	    String report = "CN   INIT      MAX     MIN       AVG     TOTAL    \n";
 	    	 
-	     for (VCACompetitor c : vcaCompetitorList) {
+	     for (VCACompetitor c : competitorList) {
 	    		 report += String.format("");
 	    		 report += String.format("%-4s", c.getCompNumber());
 				 report += String.format("%-12s", c.getCompName().getInitials());
@@ -110,7 +110,7 @@ public class CompetitorList {
 	      */
 	  public double getWinnerAvg() {
 		double maxScore = 0;
-		  for (VCACompetitor c : vcaCompetitorList) {
+		  for (VCACompetitor c : competitorList) {
 			 if ( maxScore <= c.getAverageScore()) {
 				  maxScore = c.getAverageScore();
 			 }
@@ -124,7 +124,7 @@ public class CompetitorList {
 			 	* return false if is not 
 			 */
 	  public VCACompetitor getWinName() {
-		  for (VCACompetitor c : vcaCompetitorList) {
+		  for (VCACompetitor c : competitorList) {
 			  if (c.getAverageScore() == this.getWinnerAvg()) {
 			 return c;
 			 }	
@@ -140,7 +140,7 @@ public class CompetitorList {
 			 */
 	  public VCACompetitor getWinNameByLevel(int level) {
 				
-		  for (VCACompetitor c : vcaCompetitorList) {
+		  for (VCACompetitor c : competitorList) {
 			   if (c.getLevel() == level){
 			   if (c.getAverageScore() == this.getWinnerAvg()) {
 			  return c;
@@ -155,7 +155,7 @@ public class CompetitorList {
 			 * @return size
 			 */
 	  public int getSize() {
-		  return vcaCompetitorList.size();
+		  return competitorList.size();
 		}
 			/**
 			 * returns the VCACompetitor object at specified index position
@@ -164,7 +164,7 @@ public class CompetitorList {
 			 */
 			
 	  public VCACompetitor getAtIndex(int index) {
-		  return vcaCompetitorList.get(index);
+		  return competitorList.get(index);
 		}
 			
 			/**
@@ -175,7 +175,7 @@ public class CompetitorList {
 			 */
 			
 	  public VCACompetitor findByCompNumber(int CN){
-		  for (VCACompetitor c : vcaCompetitorList) {
+		  for (VCACompetitor c : competitorList) {
 			 if (c.getCompNumber() == (CN)){ 
 			 return c; }
 			}
@@ -189,7 +189,7 @@ public class CompetitorList {
 			 */
 	  public int getCountOfVCACompetitorsAtLevel(int level) {
 		  int count = 0;
-			  for (VCACompetitor c:vcaCompetitorList) {
+			  for (VCACompetitor c:competitorList) {
 			     if (c.getLevel()==level) {
 					 count++;}
 				}
