@@ -259,7 +259,7 @@ public class CompetitorList {
 				  compNum = parts[0];
 				  compNum = compNum.trim();
 			      int CN = Integer.parseInt(compNum);
-				  Name2 name = new Name2(parts[1]);
+				  Name name = new Name(parts[1]);
 				  String nationality = parts[2];
 				  levelNum = parts[3];
 				  levelNum = levelNum.trim();
