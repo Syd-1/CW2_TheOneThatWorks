@@ -5,7 +5,7 @@ public class VCACompetitor {
 	private Name2 compName;
 	private int [] scores;
 	private static final int NUM_SCORES = 5;
-	private int level;
+	//private int level;
 	private String nationality;
 	
 	public VCACompetitor(int CNum, Name2 CName, String nat, int lev, int [] SCORES) {
