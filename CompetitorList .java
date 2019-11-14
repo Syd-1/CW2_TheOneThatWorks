@@ -20,7 +20,7 @@ public class CompetitorList {
 	/**
 	 * Adds vcacompetitor to the list, if there is not already one there
 	 * with the same ID
-	 * @param c the VCACompetitor to be added
+	 * @param c the Competitor to be added
 	 * @return true if vcaCompetitor was added to the list,
 	 	* false if already there 
 	 */
@@ -36,7 +36,7 @@ public class CompetitorList {
 	  }
 	
 	/**
-	 * Returns report with one line per vcaCompetitor
+	 * Returns report with one line per competitor
 	 * Demonstrates traversing the array, getting one element at a time
 	 * @return report 
 	 */
@@ -57,7 +57,7 @@ public class CompetitorList {
 			}
 	
 		    /**
-		     * Returns report with one line per vcaCompetitor
+		     * Returns report with one line per competitor
 		     * Demonstrates traversing the array, getting one element at a time
 		     * @return report
 		     */
@@ -83,7 +83,7 @@ public class CompetitorList {
 	    return report;
 	   }
 	  
-	     /**Returns report with one line per vcaCompetitor
+	     /**Returns report with one line per competitor
 	     * Demonstrates traversing the array, getting one element at a time
 	     * @return report
 	     */ 
@@ -120,7 +120,7 @@ public class CompetitorList {
 	  
 			/**
 			 * return the competitor with the highest average
-			 * @return vcaCompetitor if is in the list,
+			 * @return competitor if is in the list,
 			 	* return false if is not 
 			 */
 	  public Competitor getWinName() {
@@ -135,7 +135,7 @@ public class CompetitorList {
 			/**
 			 * returns the competitor who result the winner in his level
 			 * @param level
-			 * @return vcaCompetitor  if vcaCompetitor is in  the list,
+			 * @return competitor  if competitor is in  the list,
 			 	* return null if is not
 			 */
 	  public Competitor getWinNameByLevel(int level) {
@@ -158,7 +158,7 @@ public class CompetitorList {
 		  return competitorList.size();
 		}
 			/**
-			 * returns the VCACompetitor object at specified index position
+			 * returns the competitor object at specified index position
 			 * @param index
 			 * @return vcaCompetitor  at Index
 			 */
@@ -168,10 +168,10 @@ public class CompetitorList {
 		}
 			
 			/**
-			 * Returns the VCACompetitor object with a specific competitor number
+			 * Returns the Competitor object with a specific competitor number
 			 * demonstrates searching through the array and stopping by returning when a match is found
 			 * @param CN
-			 * @return vcaCompetitor by CompNumber
+			 * @return competitor by CompNumber
 			 */
 			
 	  public Competitor findByCompNumber(int CN){
@@ -183,9 +183,9 @@ public class CompetitorList {
 		}
 			
 			/**
-			 * counts the number of vcaCompetitors in a specified level
+			 * counts the number of competitors in a specified level
 			 * @param level
-			 * @return count of VCAcompetitors at requested level
+			 * @return count of Competitors at requested level
 			 */
 	  public int getCountOfCompetitorsAtLevel(int level) {
 		  int count = 0;
