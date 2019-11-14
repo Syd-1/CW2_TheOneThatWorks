@@ -56,38 +56,12 @@ public class CompetitorList {
 				return report;	
 			}
 	
-		    /**
-		     * Returns report with one line per competitor
-		     * Demonstrates traversing the array, getting one element at a time
-		     * @return report
-		     */
-	 public String getFullInfo(){
-	   String report = "FULL DETAILS OF THE COMPETITORS \n";
-	   for (Competitor c : competitorList) {
-	     report += String.format("%-100s", c.getFullDetails());
-	     report += "\n";
-	    }
-	    return report;
-	   }
-	 
-	       /**Returns report with one line per person
-		     * Demonstrates traversing the array, getting one element at a time
-		     * @return report
-		     */
-	  public String getShortInfo(){
-	    String report = "SHORT DETAILS OF THE COMPETITORS \n";
-	    for (Competitor c : competitorList) {
-	     report += String.format("%-50s", c.getShortDetails());
-	     report += "\n";
-	    }
-	    return report;
-	   }
 	  
 	     /**Returns report with one line per competitor
 	     * Demonstrates traversing the array, getting one element at a time
 	     * @return report
 	     */ 
-	  public String getStatistical(){
+	  /*public String getStatistical(){
 	    	 
 	    String report = "CN   INIT      MAX     MIN       AVG     TOTAL    \n";
 	    	 
@@ -103,7 +77,7 @@ public class CompetitorList {
 	    	 }
 	     return report;
 	    }
-	  
+	  */
 	     /**
 	      * return the higher average in the competition
 	      * @return maximum score 
@@ -138,7 +112,7 @@ public class CompetitorList {
 			 * @return competitor  if competitor is in  the list,
 			 	* return null if is not
 			 */
-	  public Competitor getWinNameByLevel(int level) {
+	  /**public Competitor getWinNameByLevel(int level) {
 				
 		  for (Competitor c : competitorList) {
 			   if (c.getLevel() == level){
@@ -149,7 +123,7 @@ public class CompetitorList {
 		  }
 		  return null;
 		}
-	  
+	  */
 			/**
 			 * returns the number of elements in the list			
 			 * @return size
@@ -252,7 +226,7 @@ public class CompetitorList {
 				 * @param line to be processed
 				 */
 		  private void processLine(String line) {
-			  String levelNum = "";
+			
 			  String compNum = "";
 				  try {
 				  String parts [] = line.split(",");
@@ -261,9 +235,7 @@ public class CompetitorList {
 			      int CN = Integer.parseInt(compNum);
 				  Name name = new Name(parts[1]);
 				  String nationality = parts[2];
-				  levelNum = parts[3];
-				  levelNum = levelNum.trim();
-				  int level = Integer.parseInt(levelNum);
+				  String level = parts[3];
 				  int scoresLength = parts.length - 4;
 				  String SCORES [] = new String[scoresLength];
 				  System.arraycopy(parts, 4, SCORES, 0, scoresLength);
