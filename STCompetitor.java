@@ -8,31 +8,19 @@ public class STCompetitor extends Competitor {
 	
 	//constructor
 	public STCompetitor(int id, Name n, String l, int a, String g, String c, int[] sc) {
-		CompID = id;
-		name = n;
-		level = l;
+		super(id, n, l, sc);
 		age = a;
 		gender = g;
 		country = c;
-		scores = sc;
 	}
 	
 	//Method to get Competitor's information
-	public int getID() { return CompID; }
 	//Level 1: Beginner; Level 2: Intermediate; Level 3: Advanced; Level 4: Expert
-	public Name getName() {return name;}
-	public String getLevel() { return level; }
 	public int getAge() { return age; }
 	public String getGender() { return gender; }
 	public String getNationality() { return Nationality; }
 	
-	
-	//method to get all the scores
-	public int[] getScoreArray() {
-		return scores;
-	}
-	
-	
+
 	
 	//Method for checking level is needed
 	public boolean checkLevel() {
@@ -65,42 +53,7 @@ public class STCompetitor extends Competitor {
 		return (double) total/scores.length;
 	};
 	
-	public int getScore(int game){
-		int score = scores[game-1];
-	return score;}
 	
-	
-	//Method to show full detail of a competitor
-	public String getFullDetails() {
-		String fullDetail = "";
-		fullDetail = "Full Details for Competitor " + CompID + ": - \n";
-		fullDetail += "Competitor number " + CompID + ", Name: ";
-		fullDetail += name.getFullName() + ".\n";
-		fullDetail += name.getFirstandLastName() + " is a " + level;
-		fullDetail += " and receive these scores in the Competition: ";
-		for (int i = 0; i<scores.length; i++) {
-			fullDetail += this.getScoreArray()[i] + " ";
-		}
-		if (gender.contentEquals("Female")){
-			fullDetail += "\nThis gives her an overall score: " 
-		+ String.format("%-4.2f",this.getOverallScore()) +"\n\n";
-			}
-		else {
-			fullDetail += "\nThis gives him an overall score: "
-		+ String.format("%-4.2f",this.getOverallScore()) + "\n\n";
-			}
-		
-		return fullDetail;
-		
-	}
-	// method for short detail, provided while manager query by CompID.
-	public String getShortDetails() {
-		String shortDetail = "";
-		shortDetail = "Short Detials for Competitor " + CompID + ": - \n";
-		shortDetail += "CN " + CompID + " (" + name.getInitial() + ") ";
-		shortDetail += "has overall score " + String.format("%-4.2f",this.getOverallScore()) + ".\n\n";
-		return shortDetail;
-	}
 	
 
 	
