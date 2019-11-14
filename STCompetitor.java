@@ -7,7 +7,7 @@ public class STCompetitor {
 	private String level;
 	private int age;
 	private String gender;
-	private String country;
+	private String Nationality;
 	private int [] scores;
 	
 	//constructor
@@ -28,7 +28,7 @@ public class STCompetitor {
 	public String getLevel() { return level; }
 	public int getAge() { return age; }
 	public String getGender() { return gender; }
-	public String getCountry() { return country; }
+	public String getNationality() { return Nationality; }
 	
 	
 	//method to get all the scores
