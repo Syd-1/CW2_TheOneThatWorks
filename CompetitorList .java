@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class CompetitorList {
 	
-	private ArrayList<VCACompetitor> CompetitorList;
+	private ArrayList<Competitor> CompetitorList;
 			
 	public CompetitorList() {
 		competitorList = new ArrayList<VCACompetitor> (); }
