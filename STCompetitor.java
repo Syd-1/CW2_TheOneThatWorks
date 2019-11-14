@@ -1,14 +1,10 @@
 
-public class STCompetitor {
+public class STCompetitor extends Competitor {
 	
 	// instance variables Syd waz here ;)
-	private int CompID;
-	private Name name;
-	private String level;
-	private int age;
+	Private int age;
 	private String gender;
 	private String Nationality;
-	private int [] scores;
 	
 	//constructor
 	public STCompetitor(int id, Name n, String l, int a, String g, String c, int[] sc) {
