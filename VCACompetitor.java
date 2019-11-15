@@ -8,12 +8,12 @@ public class VCACompetitor {
 	//private int level;
 	private String nationality;
 	
-	public VCACompetitor(int CNum, Name CName, String nat, int lev, int [] SCORES) {
-		CompNumber = CNum;
-		compName = CName;
-		level = lev;
+	public VCACompetitor( int CNum, Name CName, String nat, int lev, int [] SCORES) {
+		//CompNumber = CNum;
+		//compName = CName;
+		//level = lev;
 		nationality = nat;
-		scores = SCORES;
+		//scores = SCORES;
 	}
 	
 	public int getCompNumber() {return CompNumber;}
