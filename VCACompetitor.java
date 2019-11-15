@@ -1,5 +1,5 @@
 
-public class VCACompetitor {
+public class VCACompetitor extedns Competitor {
 	
 	//private int CompNumber;
 	//private Name compName;
@@ -8,7 +8,7 @@ public class VCACompetitor {
 	//private int level;
 	private String nationality;
 	
-	public VCACompetitor( int CNum, Name CName, String nat, int lev, int [] SCORES) {
+	public VCACompetitor( int CNum, Name CName, String nat, String lev, int [] SCORES) {
 		//CompNumber = CNum;
 		//compName = CName;
 		//level = lev;
