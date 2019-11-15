@@ -68,26 +68,13 @@ public class VCACompetitor extedns Competitor {
 		}
 		return (double) total;
 		}
-		
-		public String getFullDetails() {
-			String fullDetails = "";
-			fullDetails += "Competitor number " + this.getCompNumber() + ", name " + this.getCompName().getFullName() + ", from " + this.getNationality() 
-			+ ". \n " + this.getCompName().getFirstName() + " is in level "+ this.getLevel() + " and has an overall score of "  + String.format("%-4.1f",this.getOverallScore()) + "\n";
-			return fullDetails;
-		}
-		public String getShortDetails() {
-			String shortDetails = "";
-			shortDetails += "CN " + this.getCompNumber() + "(" + this.getCompName().getInitials() + ")" + " has an overall score " + String.format("%-4.1f",this.getOverallScore()) + "." + "\n";
-			return shortDetails;
-		}
-		
 	
-	public void setCompNumber(int CN) {
-		CompNumber = CN;}
-	public void setLevel(int lv){
-		level = lv;}
-	public void setNationality(String nt){
-		nationality = nt;}
+	//public void setCompNumber(int CN) {
+		//CompNumber = CN;}
+	//public void setLevel(int lv){
+		//level = lv;}
+	//public void setNationality(String nt){
+		//nationality = nt;}
 }
 	
 	
