@@ -12,6 +12,7 @@ public class VCACompetitor extedns Competitor {
 		//CompNumber = CNum;
 		//compName = CName;
 		//level = lev;
+		super(CNum, CName, lev, SCORES)
 		nationality = nat;
 		//scores = SCORES;
 	}
