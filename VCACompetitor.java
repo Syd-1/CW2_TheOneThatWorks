@@ -16,19 +16,19 @@ public class VCACompetitor extedns Competitor {
 		//scores = SCORES;
 	}
 	
-	public int getCompNumber() {return CompNumber;}
-	public Name2 getCompName() {
-		return compName;}
+	//public int getCompNumber() {return CompNumber;}
+	//public Name getCompName() {
+	//	return compName;}
 	
-	public int getLevel() {return level;}
+	//public String getLevel() {return level;}
 	public String getNationality() {return nationality;}
 	public void addScore(int value,  int ass ) {
 		int index = ass-1;
 	    scores[index] = value;
 	}
 	
-	public int [] getScoreArray() {
-	return scores;}
+	//public int [] getScoreArray() {
+	//return scores;}
 	
 	public int getMaxScore() {
 		int max = scores[0];
@@ -51,7 +51,7 @@ public class VCACompetitor extedns Competitor {
 	}
 		
 	
-		public double getAverageScore() {
+		public double getOverallScore() {
 		int total = 0;
 		for (int scoresIndex = 0; scoresIndex < scores.length; scoresIndex++) {
 			total += scores[scoresIndex]; 
@@ -71,12 +71,12 @@ public class VCACompetitor extedns Competitor {
 		public String getFullDetails() {
 			String fullDetails = "";
 			fullDetails += "Competitor number " + this.getCompNumber() + ", name " + this.getCompName().getFullName() + ", from " + this.getNationality() 
-			+ ". \n " + this.getCompName().getFirstName() + " is in level "+ this.getLevel() + " and has an overall score of "  + String.format("%-4.1f",this.getAverageScore()) + "\n";
+			+ ". \n " + this.getCompName().getFirstName() + " is in level "+ this.getLevel() + " and has an overall score of "  + String.format("%-4.1f",this.getOverallScore()) + "\n";
 			return fullDetails;
 		}
 		public String getShortDetails() {
 			String shortDetails = "";
-			shortDetails += "CN " + this.getCompNumber() + "(" + this.getCompName().getInitials() + ")" + " has an overall score " + String.format("%-4.1f",this.getAverageScore()) + "." + "\n";
+			shortDetails += "CN " + this.getCompNumber() + "(" + this.getCompName().getInitials() + ")" + " has an overall score " + String.format("%-4.1f",this.getOverallScore()) + "." + "\n";
 			return shortDetails;
 		}
 		
