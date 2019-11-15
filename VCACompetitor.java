@@ -1,14 +1,14 @@
 
 public class VCACompetitor {
 	
-	private int CompNumber;
-	private Name2 compName;
-	private int [] scores;
+	//private int CompNumber;
+	//private Name compName;
+	//private int [] scores;
 	private static final int NUM_SCORES = 5;
 	//private int level;
 	private String nationality;
 	
-	public VCACompetitor(int CNum, Name2 CName, String nat, int lev, int [] SCORES) {
+	public VCACompetitor(int CNum, Name CName, String nat, int lev, int [] SCORES) {
 		CompNumber = CNum;
 		compName = CName;
 		level = lev;
