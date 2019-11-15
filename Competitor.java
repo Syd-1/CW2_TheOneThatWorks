@@ -35,10 +35,7 @@ abstract public class Competitor {
 	
 	//Unique methods
 	public abstract double getOverallScore();
-	public abstract String getGender();
-	public abstract int getNumberOfWins();
-	public abstract String getNationality();
-	public abstract int getAge();
+	public abstract String getAttribute();
 	
 	//Details report; will be expanded later
 	public String getFullDetails() {
