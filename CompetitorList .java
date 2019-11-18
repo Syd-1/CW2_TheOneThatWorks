@@ -14,7 +14,7 @@ public class CompetitorList {
 	private ArrayList<Competitor> CompetitorList;
 			
 	public CompetitorList() {
-		competitorList = new ArrayList<VCACompetitor> (); }
+		competitorList = new ArrayList<Competitor> (); }
 	
 	public void add(Competitor c) {competitorList.add(c); }
 	/**
