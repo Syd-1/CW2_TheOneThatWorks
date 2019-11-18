@@ -7,8 +7,8 @@ public class STCompetitor extends Competitor {
 	private String Nationality;
 	
 	//constructor
-	public STCompetitor(int id, Name n, String l, int a, String g, String c, int[] sc) {
-		super(id, n, l, sc);
+	public STCompetitor(int CompetitorNumber, Name CompetitorName , String CompetitorLevel, int a, String g, String c, int[] Scores) {
+		super(CompetitorNumber,CompetitorName, CompetitorLevel, Scores);
 		age = a;
 		gender = g;
 		country = c;
@@ -20,13 +20,16 @@ public class STCompetitor extends Competitor {
 	public String getGender() { return gender; }
 	public String getNationality() { return Nationality; }
 	
+	public String getAttribute(){
+		return String.valueOf(getAge())+" "+ getGender()+" " + getNationality());
+	
 
 	
 	//Method for checking level is needed
 	public boolean checkLevel() {
 		//see if Competitor has the level of Advanced / Expert
 		//return True if advanced or expert
-		String lev = this.getLevel();
+		String lev = person.getlevel();
 		if (lev.contentEquals("Advanced")|lev.contentEquals("Expert")) {
 			return true;}
 		//return False for other case (Beginner / Intermediate)
