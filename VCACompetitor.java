@@ -1,5 +1,5 @@
 
-public class VCACompetitor extedns Competitor {
+public class VCACompetitor extends Competitor {
 	
 	//private int CompNumber;
 	//private Name compName;
