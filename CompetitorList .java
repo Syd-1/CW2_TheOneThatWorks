@@ -1,5 +1,3 @@
-
-import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -14,9 +12,9 @@ public class CompetitorList {
 	private ArrayList<Competitor> CompetitorList;
 			
 	public CompetitorList() {
-		competitorList = new ArrayList<Competitor> (); }
+		CompetitorList = new ArrayList<Competitor> (); }
 	
-	public void add(Competitor c) {competitorList.add(c); }
+	public void add(Competitor c) {CompetitorList.add(c); }
 	/**
 	 * Adds vcacompetitor to the list, if there is not already one there
 	 * with the same ID
@@ -26,10 +24,10 @@ public class CompetitorList {
 	 */
 	public boolean addOneCompetitor(Competitor c) {
 				
-		int CN = c.getCompNumber();
+		int CN = c.getCompetitorNumber();
 		Competitor inList = this.findByCompNumber(CN);
 		if (inList == null) {
-			competitorList.add(c);
+			CompetitorList.add(c);
 			return true;
 			}
 		return false;
@@ -44,11 +42,10 @@ public class CompetitorList {
 	public String getTableOfCompetitors() {
 				String report = "CN    NAME                        NATIONALITY        LEVEL        SCORES       \n";
 				
-				for (Competitor c  : competitorList) {
+				for (Competitor c  : CompetitorList) {
 					report += String.format("");
-					report += String.format("%-4s", c.getCompNumber());
+					report += String.format("%-4s", c.getCompetitorNumber());
 					report += String.format("%-30s", c.getCompName().getFullName());
-					report += String.format("%-20s", c.getNationality());
 					report += String.format("%-8d", c.getLevel());
 					report += String.format("%-20s", Arrays.toString(c.getScoreArray()));
 					report += "\n";
@@ -84,7 +81,7 @@ public class CompetitorList {
 	      */
 	  public double getWinnerAvg() {
 		double maxScore = 0;
-		  for (VCACompetitor c : competitorList) {
+		  for (Competitor c : CompetitorList) {
 			 if ( maxScore <= c.getOverallScore()) {
 				  maxScore = c.getOverallScore();
 			 }
@@ -98,7 +95,7 @@ public class CompetitorList {
 			 	* return false if is not 
 			 */
 	  public Competitor getWinName() {
-		  for (Competitor c : competitorList) {
+		  for (Competitor c : CompetitorList) {
 			  if (c.getOverallScore() == this.getWinnerAvg()) {
 			 return c;
 			 }	
@@ -129,7 +126,7 @@ public class CompetitorList {
 			 * @return size
 			 */
 	  public int getSize() {
-		  return competitorList.size();
+		  return CompetitorList.size();
 		}
 			/**
 			 * returns the competitor object at specified index position
@@ -138,7 +135,7 @@ public class CompetitorList {
 			 */
 			
 	  public Competitor getAtIndex(int index) {
-		  return competitorList.get(index);
+		  return CompetitorList.get(index);
 		}
 			
 			/**
@@ -149,8 +146,8 @@ public class CompetitorList {
 			 */
 			
 	  public Competitor findByCompNumber(int CN){
-		  for (Competitor c : competitorList) {
-			 if (c.getCompNumber() == (CN)){ 
+		  for (Competitor c : CompetitorList) {
+			 if (c.getCompetitorNumber() == (CN)){ 
 			 return c; }
 			}
 		  return null;
@@ -161,14 +158,14 @@ public class CompetitorList {
 			 * @param level
 			 * @return count of Competitors at requested level
 			 */
-	  public int getCountOfCompetitorsAtLevel(int level) {
-		  int count = 0;
-			  for (Competitor c:competitorList) {
-			     if (c.getLevel()==level) {
-					 count++;}
-				}
-			 return count;
-			}
+//	  public int getCountOfCompetitorsAtLevel(int level) {
+//		  int count = 0;
+//			  for (Competitor c:CompetitorList) {
+//			     if (c.getLevel()==level) {
+//					 count++;}
+//				}
+//			 return count;
+//			}
 			
 			/**
 			 * writes supplied text to file	
@@ -208,6 +205,7 @@ public class CompetitorList {
 					  if (inputLine.length() != 0) { 
 						  processLine(inputLine);
 					  }
+					 scanner.close();
 				  }
 			 }
 					/**
@@ -244,7 +242,7 @@ public class CompetitorList {
 					  scores[index] = Integer.parseInt(SCORES[index].trim());
 				  }
 						
-				  Competitor c = new Competitor(CN, name, nationality,level, scores);
+				  Competitor c = new Competitor(compNum, name, level, scores);
 				  this.add(c);
 			  }
 				  
@@ -267,4 +265,6 @@ public class CompetitorList {
 			  }
 		  }				
 }
+
+
 
