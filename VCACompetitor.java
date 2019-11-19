@@ -1,41 +1,31 @@
 
-public class VCACompetitor extends Competitor {
-	
-	//private int CompNumber;
-	//private Name compName;
-	//private int [] scores;
-	private static final int NUM_SCORES = 5;
-	//private int level;
+public class VCACompetitor extends Competitor{
+		
 	private String nationality;
 	
-	public VCACompetitor( int CNum, Name CName, String nat, String lev, int [] SCORES) {
-		//CompNumber = CNum;
-		//compName = CName;
-		//level = lev;
-		super(CNum, CName, lev, SCORES)
-		nationality = nat;
-		//scores = SCORES;
+	public VCACompetitor(int CompetitorNumber, String CompetitorName, String CompetitorLevel, int[] Scores, String attribute) {
+		super(CompetitorNumber,CompetitorName,CompetitorLevel, Scores);
+		nationality = attribute;
+		
+	
+	}
+	public String getAttribute() {
+		return nationality;
 	}
 	
-	//public int getCompNumber() {return CompNumber;}
-	//public Name getCompName() {
-	//	return compName;}
-	
-	//public String getLevel() {return level;}
-	public String getNationality() {return nationality;}
 	public void addScore(int value,  int ass ) {
 		int index = ass-1;
-	    scores[index] = value;
+		int[] Scores = super.getScoreArray();
+	    Scores[index] = value;
 	}
-	
-	//public int [] getScoreArray() {
-	//return scores;}
 	
 	public int getMaxScore() {
 		int max = scores[0];
-		for (int scoresIndex = 1; scoresIndex <scores.length; scoresIndex++) {
-			if (scores[scoresIndex] > max) {
-				max = scores[scoresIndex];
+		int[] Scores = super.getScoreArray();
+		for (int index = 1; index <Scores.length; index++) 
+		{
+			if (Scores[index] > max) {
+				max = Scores[index];
 			}
 		}
 		return max;
@@ -43,42 +33,37 @@ public class VCACompetitor extends Competitor {
 	
 	public int getMinScore() {
 		int min = scores[0];
-		for (int scoresIndex = 1; scoresIndex <scores.length; scoresIndex++) {
-			if (scores[scoresIndex] < min) {
-				min = scores[scoresIndex];
+		int[] Scores = super.getScoreArray();
+		for (int index = 1; index < Scores.length; index++) {
+			if (Scores[index] < min) {
+				min = Scores[index];
 			}
 		}
 		return min;
 	}
-		
 	
 		public double getOverallScore() {
 		int total = 0;
-		for (int scoresIndex = 0; scoresIndex < scores.length; scoresIndex++) {
-			total += scores[scoresIndex]; 
+		int[] Scores = super.getScoreArray();
+		for (int index = 0; index < Scores.length; index++) {
+			total += Scores[index]; 
 		}
 		    total = total - this.getMaxScore() - this.getMinScore();
 		
-		return (double) total/(scores.length-2);
+		return (double) total/(Scores.length-2);
 	}
+	
 		public double getTotals() {
 			int total= 0;
-			for (int scoresIndex = 0; scoresIndex < scores.length; scoresIndex++) {
-				total += scores[scoresIndex];
+			int[] Scores = super.getScoreArray();
+			for (int index = 0; index < Scores.length; index++) {
+				total += Scores[index];
 		}
 		return (double) total;
 		}
 	
-	//public void setCompNumber(int CN) {
-		//CompNumber = CN;}
-	//public void setLevel(int lv){
-		//level = lv;}
-	//public void setNationality(String nt){
-		//nationality = nt;}
+			
 }
-	
-	
-	
 	
 	
 	
