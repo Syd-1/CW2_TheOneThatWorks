@@ -2,26 +2,20 @@
 public class STCompetitor extends Competitor {
 	
 	// instance variables Syd waz here ;)
-	Private int age;
-	private String gender;
-	private String Nationality;
+	private String age;
 	
 	//constructor
-	public STCompetitor(int CompetitorNumber, Name CompetitorName , String CompetitorLevel, int a, String g, String c, int[] Scores) {
+	public STCompetitor(int CompetitorNumber, String CompetitorName , String CompetitorLevel, int[] Scores, String attribute) {
 		super(CompetitorNumber,CompetitorName, CompetitorLevel, Scores);
-		age = a;
-		gender = g;
-		country = c;
+		age = attribute;
+
 	}
 	
 	//Method to get Competitor's information
 	//Level 1: Beginner; Level 2: Intermediate; Level 3: Advanced; Level 4: Expert
-	public int getAge() { return age; }
-	public String getGender() { return gender; }
-	public String getNationality() { return Nationality; }
-	
-	public String getAttribute(){
-		return String.valueOf(getAge())+" "+ getGender()+" " + getNationality());
+	public String getAttribute() { return age; }
+
+
 	
 
 	
@@ -29,7 +23,7 @@ public class STCompetitor extends Competitor {
 	public boolean checkLevel() {
 		//see if Competitor has the level of Advanced / Expert
 		//return True if advanced or expert
-		String lev = person.getlevel();
+		String lev = super.getLevel();
 		if (lev.contentEquals("Advanced")|lev.contentEquals("Expert")) {
 			return true;}
 		//return False for other case (Beginner / Intermediate)
@@ -45,15 +39,16 @@ public class STCompetitor extends Competitor {
 	//assumes that all score entered, if not, 0 will be used for calculation.
 	public double getOverallScore() {
 		double total = 0;
-		for (int scoreIndex = 0; scoreIndex < scores.length; scoreIndex ++) {
-			total += scores[scoreIndex];
+		int[] sc = super.getScoreArray();
+		for (int index = 0; index < sc.length; index ++) {
+			total += sc[index];
 		}
 		// if Competitor has Advanced or Expert level, total score x 1.2
 		if (this.checkLevel()) {
 			total = total * 1.2;
 		}
 		//return overall score 
-		return (double) total/scores.length;
+		return (double) total/sc.length;
 	};
 	
 	
