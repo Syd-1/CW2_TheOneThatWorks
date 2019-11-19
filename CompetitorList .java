@@ -60,17 +60,21 @@ public class CompetitorList {
 	     */ 
 	  /*public String getStatistical(){
 	    	 
-	    String report = "CN   INIT      MAX     MIN       AVG     TOTAL    \n";
-	    	 
+	    String report = "";
+		//Title of table
+			report += String.format("%-4s", "CN");
+			report += String.format("%-30s", "Name");
+			report += String.format("%-8s", "Level");
+			report += String.format("%-20s", "Scores");
+			report += "\n";
 	     for (Competitor c : competitorList) {
-	    		 report += String.format("");
-	    		 report += String.format("%-4s", c.getCompNumber());
-				 report += String.format("%-12s", c.getCompName().getInitials());
-	    		 report += String.format("%-8.1s", c.getMaxScore());
-				 report += String.format("%-8.1s", c.getMinScore());
-				 report += String.format("%-8.2f", c.getOverallScore());
-				 report += String.format("%-8.2f", c.getTotals());
-				 report += "\n";
+	    		report += String.format("%-4s", c.getCompNumber());
+			report += String.format("%-12s", c.getCompName().getInitials());
+	    		report += String.format("%-8.1s", c.getMaxScore());
+			report += String.format("%-8.1s", c.getMinScore());
+			report += String.format("%-8.2f", c.getOverallScore());
+			report += String.format("%-8.2f", c.getTotals());
+			report += "\n";
 	    	 }
 	     return report;
 	    }
@@ -238,11 +242,15 @@ public class CompetitorList {
 					  for (int index = 0; index <= scoresLength; index++) {
 						  int i = index + 2 ;
 						 scores[index] = Integer.parseInt(parts[i]);}
+					String attribute = parts[8];
 						  
 					//create Competitor object and add to the list
 					//Competitor c = new Competitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores);
-					Competitor c = new SHCCompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, CompetitorNumber);
+					SHCCompetitor c = new SHCCompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, CompetitorNumber);
+					STCompetitor c2 = new STCompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);
 					this.add(c);
+					this.add(c2);	  
+
 				}
 				catch (ArrayIndexOutOfBoundsException air) {
 					String error = "Not enough items in  : '" + line
