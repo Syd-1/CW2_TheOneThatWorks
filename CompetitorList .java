@@ -243,7 +243,7 @@ public class CompetitorList {
 					  for (int index = 0; index <= scoresLength; index++) {
 						  int i = index + 2 ;
 						 scores[index] = Integer.parseInt(parts[i]);}
-					String attribute = parts[8];
+					String attribute = parts[parts.length];
 						  
 					//create Competitor object and add to the list
 					//Competitor c = new Competitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores);
