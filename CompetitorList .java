@@ -201,6 +201,7 @@ public class CompetitorList {
 				  * @param filename the name of the input file
 				  */
 		  public void readFile (String filename) {
+				  public void readFile (String filename) {
 			  try {
 				  File f = new File(filename);
 				  Scanner scanner = new Scanner(f);
@@ -208,9 +209,9 @@ public class CompetitorList {
 					  String inputLine = scanner.nextLine();
 					  if (inputLine.length() != 0) { 
 						  processLine(inputLine);
-					  }
-					 scanner.close();
+					  }					 
 				  }
+				  scanner.close();
 			 }
 					/**
 					 * if the file is not found, stop with system exit
