@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.Scanner;  
 
-
 public class CompetitorList {
 	
 	private ArrayList<Competitor> CompetitorList;
@@ -40,14 +39,15 @@ public class CompetitorList {
 	 */
 	
 	public String getTableOfCompetitors() {
-				String report = "CN    NAME                        NATIONALITY        LEVEL        SCORES       \n";
+				String report = "CN  NAME         LEVEL  SCORES      	ATTRIBUTE \n";
 				
 				for (Competitor c  : CompetitorList) {
 					report += String.format("");
 					report += String.format("%-4s", c.getCompetitorNumber());
-					report += String.format("%-30s", c.getCompName().getFullName());
-					report += String.format("%-8d", c.getLevel());
+					report += c.getCompName().getFullName()+" ";
+					report += c.getLevel()+" ";
 					report += String.format("%-20s", Arrays.toString(c.getScoreArray()));
+					report += String.format("%-4s", c.getAttribute());
 					report += "\n";
 				}
 				return report;	
@@ -201,7 +201,6 @@ public class CompetitorList {
 				  * @param filename the name of the input file
 				  */
 		  public void readFile (String filename) {
-				  public void readFile (String filename) {
 			  try {
 				  File f = new File(filename);
 				  Scanner scanner = new Scanner(f);
@@ -238,19 +237,19 @@ public class CompetitorList {
 					int CompetitorNumber = Integer.parseInt(parts[0]);
 					String CompetitorName = parts[1];
 					String CompetitorLevel = parts[2];
-					 int scoresLength = parts.length - 4;
+					 int scoresLength = 5; //parts.length - 5;
 					  int scores [] = new int [scoresLength]; 
-					  for (int index = 0; index <= scoresLength; index++) {
-						  int i = index + 2 ;
+					  for (int index = 0; index < scoresLength; index++) {
+						  int i = index + 3;
 						 scores[index] = Integer.parseInt(parts[i]);}
-					String attribute = parts[parts.length];
+					String attribute = parts[8];//[parts.length-1];
 						  
 					//create Competitor object and add to the list
 					//Competitor c = new Competitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores);
-					SHCCompetitor c = new SHCCompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, CompetitorNumber);
-					STCompetitor c2 = new STCompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);
+					SHCCompetitor c = new SHCCompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);
+					//STCompetitor c2 = new STCompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);
 					this.add(c);
-					this.add(c2);	  
+					//this.add(c2);	  
 
 				}
 				catch (ArrayIndexOutOfBoundsException air) {
@@ -266,6 +265,3 @@ public class CompetitorList {
 			}
 			
 }
-
-
-
