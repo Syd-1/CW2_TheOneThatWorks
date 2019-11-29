@@ -267,6 +267,8 @@ public class CompetitorList {
 					//STCompetitor c2 = new STCompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);
 					this.add(c);
 					//this.add(c2);	  
+					//VCACompetitor c3 = new VCACompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);  
+					//this.add(c3);
 
 				}
 				catch (ArrayIndexOutOfBoundsException air) {
