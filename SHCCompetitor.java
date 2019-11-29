@@ -12,10 +12,10 @@ public class SHCCompetitor extends Competitor{
 	private int level;				// Competitor's Level of
 	
 	//Constructor 
-	public  SHCCompetitor(int CompetitorNumber, String CompetitorName, String CompetitorLevel, int[] Scores, int NoOfPrevWins)
+	public  SHCCompetitor(int CompetitorNumber, String CompetitorName, String CompetitorLevel, int[] Scores, String attribute)
 	{
 		super(CompetitorNumber, CompetitorName, CompetitorLevel, Scores);
-		this.noWins = NoOfPrevWins;	
+		this.noWins = Integer.parseInt(attribute);	
 	}
 		
 	//Return Values 	
