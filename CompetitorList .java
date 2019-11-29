@@ -42,14 +42,18 @@ public class CompetitorList {
 		String report = ""; int i = 0;
 				for (Competitor c  : CompetitorList) {
 					if (i == 0){
-						report = "CN  NAME        	 LEVEL  SCORES       "+c.getAttributeName()+" \n";
-					}					
+						report += String.format("%-4s", "CN");
+						report += String.format("%-30s", "Name");
+						report += String.format("%-15s", "Level");
+						report += String.format("%-20s", "Scores");
+						report += String.format("%-10s", c.getAttributeName()+" \n");
+					}	
 					report += String.format("");
 					report += String.format("%-4s", c.getCompetitorNumber());
-					report += c.getCompName().getFullName()+" 	 ";
-					report += c.getLevel()+" 	";
+					report += String.format("%-30s",c.getCompName().getFullName());
+					report += String.format("%-15s", c.getLevel());
 					report += String.format("%-20s", Arrays.toString(c.getScoreArray()));
-					report += c.getAttribute();
+					report += String.format("%-10s", c.getAttribute());
 					report += "\n"; i++;
 				}
 				return report;	
