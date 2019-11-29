@@ -72,10 +72,13 @@ public class Name {
   //Added to find initials 
   public String getInitials() {
 	 char i1 = firstName.charAt(0);
-	 char i3 = lastName.charAt(0);
+	 String inital3 ="";
+	 if (!lastName.equals("")){
+		 char i3 = lastName.charAt(0);
+		 inital3 = Character.toString(i3);
+	 }
 	 String result = "";
 	 String inital1 = Character.toString(i1);
-	 String inital3 = Character.toString(i3);
 	  if (middleName.equals("")) {
 		  result = inital1 + inital3;}
 	  else{
