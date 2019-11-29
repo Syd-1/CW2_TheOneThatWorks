@@ -16,6 +16,7 @@ public class SHCCompetitor extends Competitor{
 	{
 		super(CompetitorNumber, CompetitorName, CompetitorLevel, Scores);
 		this.noWins = Integer.parseInt(attribute);	
+		this.scores = Scores;
 	}
 		
 	//Return Values 	
@@ -27,15 +28,15 @@ public class SHCCompetitor extends Competitor{
 		return String.valueOf(getNumberOfWins());
 	}
 	
+	public String getAttributeName(){
+		return "NoWins";
+	}
+	
 	//Calculates overall score with penalty for higher levels
 	public double getOverallScore() {
-		int[] sA = new int[scores.length];
-		for (int i = 0; i < scores.length; i++) {
-			sA[i] = Character.getNumericValue(scores[i]);
-			}
-		int sumScore = 0;		
-		for (int index = 0; index < scores.length; index++) {
-			sumScore += sA[index];}				
+		int sumScore = 0; 		
+		for (int i = 0; i < scores.length-1; i++) {
+			sumScore += scores[i];}				
 		return (double) Math.round(sumScore*(11-level)*5/20)/10; 		
 	}
 	
