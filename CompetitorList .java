@@ -38,7 +38,7 @@ public class CompetitorList {
 	 * @return report 
 	 */
 	
-	public String getTableOfCompetitorsXL() {
+	public String getTableOfCompetitors() {
 		String report = ""; int i = 0;
 				for (Competitor c  : CompetitorList) {
 					if (i == 0){
@@ -51,19 +51,6 @@ public class CompetitorList {
 					report += String.format("%-20s", Arrays.toString(c.getScoreArray()));
 					report += c.getAttribute();
 					report += "\n"; i++;
-				}
-				return report;	
-			}
-	
-	public String getTableOfCompetitors() {
-		String report = "CN  NAME        	 LEVEL  SCORES \n";
-				for (Competitor c  : CompetitorList) {				
-					report += String.format("");
-					report += String.format("%-4s", c.getCompetitorNumber());
-					report += c.getCompName().getFullName()+" 	 ";
-					report += c.getLevel()+" 	";
-					report += String.format("%-20s", Arrays.toString(c.getScoreArray()));
-					report += "\n"; 
 				}
 				return report;	
 			}
