@@ -48,9 +48,10 @@ abstract public class Competitor {
 				+ String.valueOf(getOverallScore()) + ".";
 	}
 	public String getShortDetails() {
-		return "CN " + Integer.toString(getCompetitorNumber()) + " (" 
-				+ getCompName().getInitials() + ") who has overall score " 
-				+ Double.toString(getOverallScore()) + ".";
+		String shortDetail = "";
+		shortDetail += "CN " + Integer.toString(getCompetitorNumber()) + " (" + getCompName().getInitials() + ") ";
+		shortDetail += "who has overall score " + String.format("%-4.2f",getOverallScore()) + ".";
+		return shortDetail;
 	}
 	
 
