@@ -223,12 +223,13 @@ public class CompetitorList {
 				  */
 		  public void readFile (String filename) {
 			  try {
+				  char compType = filename.charAt(0);
 				  File f = new File(filename);
 				  Scanner scanner = new Scanner(f);
 				  while (scanner.hasNextLine()) {
 					  String inputLine = scanner.nextLine();
 					  if (inputLine.length() != 0) { 
-						  processLine(inputLine);
+						  processLine(inputLine, String.valueOf(compType));
 					  }					 
 				  }
 				  scanner.close();
@@ -252,7 +253,7 @@ public class CompetitorList {
 				 * @param line to be processed
 				 * @return 
 				 */
-			private void processLine(String line) {
+			private void processLine(String line, String type) {
 				try {
 					String parts [] = line.split(",");
 					int CompetitorNumber = Integer.parseInt(parts[0]);
@@ -266,15 +267,17 @@ public class CompetitorList {
 					String attribute = parts[8];//[parts.length-1];
 						  
 					//create Competitor object and add to the list
-					//Competitor c = new Competitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores);
-					SHCCompetitor c = new SHCCompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);
-					//STCompetitor c2 = new STCompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);
-					this.add(c);
-					//this.add(c2);	  
-					//VCACompetitor c3 = new VCACompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);  
-					//this.add(c3);
-
+						if (type.equals("C")){
+						SHCCompetitor c = new SHCCompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);
+						this.add(c);}
+						else if (type.equals("A")){
+						VCACompetitor c = new VCACompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);
+						this.add(c);}
+						else if (type.equals("T")){
+						STCompetitor c = new STCompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);
+						this.add(c);}	
 				}
+				
 				catch (ArrayIndexOutOfBoundsException air) {
 					String error = "Not enough items in  : '" + line
 					                        + "' index position : " + air.getMessage();
