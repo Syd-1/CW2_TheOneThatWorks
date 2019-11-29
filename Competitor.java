@@ -36,6 +36,7 @@ abstract public class Competitor {
 	//Unique methods
 	public abstract double getOverallScore();
 	public abstract String getAttribute();
+	public abstract String getAttributeName();
 	
 	//Details report; will be expanded later
 	public String getFullDetails() {
@@ -49,7 +50,7 @@ abstract public class Competitor {
 	public String getShortDetails() {
 		return "CN " + Integer.toString(getCompetitorNumber()) + " (" 
 				+ getCompName().getInitials() + ") who has overall score " 
-				+ String.valueOf(getOverallScore()) + ".";
+				+ Double.toString(getOverallScore()) + ".";
 	}
 	
 
