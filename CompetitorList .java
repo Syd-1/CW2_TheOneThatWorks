@@ -38,21 +38,50 @@ public class CompetitorList {
 	 * @return report 
 	 */
 	
-	public String getTableOfCompetitors() {
-				String report = "CN  NAME         LEVEL  SCORES      	ATTRIBUTE \n";
-				
+	public String getTableOfCompetitorsXL() {
+		String report = ""; int i = 0;
 				for (Competitor c  : CompetitorList) {
+					if (i == 0){
+						report = "CN  NAME        	 LEVEL  SCORES       "+c.getAttributeName()+" \n";
+					}					
 					report += String.format("");
 					report += String.format("%-4s", c.getCompetitorNumber());
-					report += c.getCompName().getFullName()+" ";
-					report += c.getLevel()+" ";
+					report += c.getCompName().getFullName()+" 	 ";
+					report += c.getLevel()+" 	";
 					report += String.format("%-20s", Arrays.toString(c.getScoreArray()));
-					report += String.format("%-4s", c.getAttribute());
-					report += "\n";
+					report += c.getAttribute();
+					report += "\n"; i++;
 				}
 				return report;	
 			}
 	
+	public String getTableOfCompetitors() {
+		String report = "CN  NAME        	 LEVEL  SCORES \n";
+				for (Competitor c  : CompetitorList) {				
+					report += String.format("");
+					report += String.format("%-4s", c.getCompetitorNumber());
+					report += c.getCompName().getFullName()+" 	 ";
+					report += c.getLevel()+" 	";
+					report += String.format("%-20s", Arrays.toString(c.getScoreArray()));
+					report += "\n"; 
+				}
+				return report;	
+			}
+	
+	public String getCompetitorReport(){
+		String report = "";
+		double maxScore = 0;
+		String winner = "";
+		for (Competitor c  : CompetitorList) {
+			report += c.getShortDetails();
+			if (c.getOverallScore()>maxScore){
+				maxScore = c.getOverallScore();
+				winner = c.getShortDetails();
+			}
+		}
+		report += "\n And the Winner is " + winner;
+		return report;		
+	}
 	  
 	     /**Returns report with one line per competitor
 	     * Demonstrates traversing the array, getting one element at a time
