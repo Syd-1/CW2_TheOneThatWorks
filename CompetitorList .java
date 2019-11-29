@@ -73,14 +73,15 @@ public class CompetitorList {
 		double maxScore = 0;
 		String winner = "";
 		for (Competitor c  : CompetitorList) {
-			report += c.getShortDetails();
-			if (c.getOverallScore()>maxScore){
+			report += c.getShortDetails() + "\n";
+			if (c.getOverallScore() > maxScore){
 				maxScore = c.getOverallScore();
 				winner = c.getShortDetails();
 			}
 		}
 		report += "\n And the Winner is " + winner;
 		return report;		
+	}return report;		
 	}
 	  
 	     /**Returns report with one line per competitor
