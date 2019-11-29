@@ -1,7 +1,7 @@
 
 public class STCompetitor extends Competitor {
 	
-	// instance variables Syd waz here ;)
+	
 	private String age;
 	
 	//constructor
@@ -14,7 +14,7 @@ public class STCompetitor extends Competitor {
 	//Method to get Competitor's information
 	//Level 1: Beginner; Level 2: Intermediate; Level 3: Advanced; Level 4: Expert
 	public String getAttribute() { return age; }
-
+	public String getAttributeName() { return "AGE"; }
 
 	
 
