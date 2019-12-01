@@ -178,6 +178,39 @@ public class CompetitorList {
 			}
 		  return null;
 		}
+
+		//Show Level & ID for GUI
+		//From Sheron
+		public String showLevel(){
+			String list = ""; int i = 0;
+			for (Competitor c  : CompetitorList) {
+			if (i == 0){
+				list += String.format("%-4s", "CN");
+				list += String.format("%-15s", "Level \n");
+			}	
+			list += String.format("%-4s", c.getCompetitorNumber());
+			list += String.format("%-15s", c.getLevel());
+			list += "\n"; i++;
+			}
+			list += "\n";
+			return list;
+		}	
+		
+		//Show OverallScore & ID for GUI
+		//From Sheron
+		public String showOverallScore(){
+			String list = ""; int i = 0;
+			for (Competitor c  : CompetitorList) {
+				if (i == 0){
+					list += String.format("%-4s", "CN");
+					list += String.format("%-10s", "Overall Score \n");
+				}	
+				list += String.format("%-4s", c.getCompetitorNumber());
+				list += String.format("%-10.2f", c.getOverallScore());
+				list += "\n"; i++;
+			}
+			return list;	
+		}
 			
 			/**
 			 * counts the number of competitors in a specified level
