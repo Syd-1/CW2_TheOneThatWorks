@@ -116,8 +116,8 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    public void actionPerformed(ActionEvent e) 
 	    { 
 	    	if (e.getSource() == search) {
-	    		displayList.setText("Show");
-	    		//search();
+	    		//displayList.setText("Show");
+	    		search();
 	    	}
 //	    	else if (e.getSource() == showListById) {
 //	    		displayList.setText(staffList.listByID());
