@@ -13,14 +13,23 @@ public class GUIFrame extends JFrame implements ActionListener {
 	    
 	    //GUI components
 	    JTextField  [] scoresF;
-	    JTextField result;
-	    JTextField searchField;
-	    JButton search;
+	    JTextField result, result2, result3;
+	    JTextField  searchField, searchField1, searchField2, searchField3;
+	    JButton search, search2;
 	    JScrollPane scrollList;
-	    JButton showListById, showListByName, update, close;
+	    JButton showListById, showListByName,close;
 	    JTextArea displayList;
-	    
 	    JButton showLevel, showOverallScore;
+	    JButton update, game, score;
+	    
+	   
+	   
+	   
+	   
+	   
+	   
+	    
+	   
 	    
 //	    //also create grid of buttons
 //	    GridOfButtonsFrame gobf; 
@@ -61,29 +70,57 @@ public class GUIFrame extends JFrame implements ActionListener {
 	       
 	    }
 	        
-	   private void setupEastPanel() {
+	    private void setupEastPanel() {
+		   
 	   JPanel eastPanel = new JPanel();
-	   eastPanel.setLayout(new GridLayout(6,2));
+	   eastPanel.setLayout(new GridLayout(6,2)); 
+	   eastPanel.add(new JLabel("Update scores"));
+	   eastPanel.add(new JLabel(""));
+	   eastPanel.add(new JLabel(""));
+	   eastPanel.add(new JLabel("Enter CN"));
+	   searchField1 = new JTextField(5);
+	   eastPanel.add(searchField1); 
+	   search2 = new JButton("Search");  
+       eastPanel.add(search2);
+       eastPanel.add(new JLabel(""));
+  
+	   result3 = new JTextField(10); 
+	   eastPanel.add(result3);
+       result3.setEditable(false);
+       eastPanel.add(new JLabel(""));
+      
+	   eastPanel.add(new JLabel("game (1 to 5)"));
+	   searchField2 = new JTextField(5);
+	   eastPanel.add(searchField2); 
+	   eastPanel.add(new JLabel(""));
+	   eastPanel.add(new JLabel("score"));
+	   searchField3 = new JTextField(5);
+	   eastPanel.add(searchField3); 
 	   
-	   JLabel scoresL = new JLabel("Scores");
-	   eastPanel.add(scoresL);
-	   JPanel scoresPanel = new JPanel();
-	   scoresF = new JTextField[5];
-	   	for (int i = 0; i < 5; i++) {
-	   		scoresF[i] = new JTextField(2);
-	   		
-	   		scoresPanel.add((scoresF[i]));
-	   	}
-	   	eastPanel.add(scoresPanel);
-	   	JLabel dummy = new JLabel("");
-	   	eastPanel.add(dummy);
-	   	update = new JButton ("Update");
-	   	update.addActionListener(this);
-	   	update.setEnabled(false);
-	   	eastPanel.add(update);
+	   result2 = new JTextField(10);     
+       result2.setEditable(false);
+       
+	   update = new JButton("Update");  
+       eastPanel.add(update); 
+       update.addActionListener(this);
+       eastPanel.add(new JLabel(""));
+       eastPanel.add(result2);
 	   
+       
 	   this.add(eastPanel, BorderLayout.EAST); 
-	   	}
+   	}
+	   
+	   private void update() {
+		   String searchString1 = searchField.getText().trim();
+		   Competitor c = complist.findByCompNumber(Integer.parseInt(searchString1));
+		   
+		   String searchString2 = searchField.getText().trim();
+		   int game = Integer.parseInt(searchString2);
+		   String searchString3 = searchField.getText().trim();
+		   int score = Integer.parseInt(searchString3);
+		   c.setScore(game, score);
+		   result.setText(String.format("-5.2f", c.getOverallScore()));	   
+	   }
 	   
 	    
 	    private void setupSouthPanel() {
