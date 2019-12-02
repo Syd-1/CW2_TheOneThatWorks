@@ -73,8 +73,8 @@ public class CompetitorList {
 		}
 		report += "\n And the Winner is " + winner;
 		return report;		
-	}return report;		
-	}
+	}	
+	
 	  
 	     /**Returns report with one line per competitor
 	     * Demonstrates traversing the array, getting one element at a time
