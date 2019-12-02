@@ -69,8 +69,7 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        this.add(scrollList,BorderLayout.CENTER);
 	       
 	    }
-	        
-	    private void setupEastPanel() {
+	   private void setupEastPanel() {
 		   
 	   JPanel eastPanel = new JPanel();
 	   eastPanel.setLayout(new GridLayout(6,2)); 
@@ -82,13 +81,13 @@ public class GuiFrame extends JFrame implements ActionListener {
 	   eastPanel.add(searchField1); 
 	   search2 = new JButton("Search");  
        eastPanel.add(search2);
+       search2.addActionListener(this) ;
        eastPanel.add(new JLabel(""));
   
 	   result3 = new JTextField(10); 
 	   eastPanel.add(result3);
        result3.setEditable(false);
        eastPanel.add(new JLabel(""));
-      
 	   eastPanel.add(new JLabel("game (1 to 5)"));
 	   searchField2 = new JTextField(5);
 	   eastPanel.add(searchField2); 
@@ -121,6 +120,13 @@ public class GuiFrame extends JFrame implements ActionListener {
 		   c.setScore(game, score);
 		   result.setText(String.format("-5.2f", c.getOverallScore()));	   
 	   }
+	   private void search2() {
+		   String searchString1 = searchField.getText().trim();
+		   Competitor c = complist.findByCompNumber(Integer.parseInt(searchString1));
+		   result.setText(Arrays.toString(c.getScoreArray()));
+		     
+	   }
+	        
 	   
 	    
 	    private void setupSouthPanel() {
@@ -200,6 +206,14 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    		JOptionPane.showMessageDialog(this, 
 	    				 "Do 'end of program' things instead of showing this");
 	    		System.exit(0);
+	    	}
+		else if(e.getSource() == search2) {
+	    		//displayList.setText("Show");
+	    		search2();
+	    	}
+	    	else if(e.getSource() == update) {
+	    		//displayList.setText("Show");
+	    		update();
 	    	}
 	    }  
 	  
