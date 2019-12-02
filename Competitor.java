@@ -32,6 +32,7 @@ abstract public class Competitor {
 	public String getLevel(){			
 		return level;
 	}
+	 
 	
 	//Unique methods
 	public abstract double getOverallScore();
