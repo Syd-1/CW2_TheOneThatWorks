@@ -38,7 +38,7 @@ public class GuiFrame extends JFrame implements ActionListener {
 	     * Create the frame with its panels.
 	     * @param list	The staff list to be searched.
 	     */
-	    public GUIFrame (CompetitorList list)
+	    public GuiFrame (CompetitorList list)
 	    {
 	        this.complist = list;
 	        
