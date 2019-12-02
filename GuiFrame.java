@@ -138,23 +138,21 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    	}
 	    }  
 	  
-//	    private void search() {
-//	    	//get search text and search staff list
-//	    	//setting result text 
-//	        String searchString = searchField.getText().trim();
-//	        if(searchString.length() > 0) {
-//	            Staff person = staffList.findById(searchString);
-//	            if (person != null ) {
-//	            	result.setText(person.toString());
-//	            	gobf.disableButton(person.getName().getFirstName());
-//	            }
-//	            else
-//	            	result.setText("not found");
-//	        }   
-//	        else
-//	        	result.setText("no text entered");
-//	    }
-//
-//	}
+	    private void search() {
+	    	//get search text and search comp list
+	    	//setting result text 
+	        String searchString = searchField.getText().trim();
+	        if(searchString.length() > 0) {
+	        	Competitor person = complist.findByCompNumber(Integer.parseInt(searchString));
+	            if (person != null ) {
+	            	result.setText(person.getShortDetails());  
+	            	//gobf.disableButton(person.getFullDetails());
+	            }
+	            else
+	            	result.setText("not found");
+	        }   
+	        else
+	        	result.setText("no text entered");
+	    }
 
 }
