@@ -87,6 +87,12 @@ public class Name {
 		  result = inital1 + inital2 + inital3;} 
 	 return result;
   }
-   
+     public int compareTo(Name other){
+	  String thisName = lastName + " " + firstName + " " + middleName;
+	  String othername = other.lastName + " " + other.firstName + " " + other.middleName;
+	  
+	  return thisName.compareTo(othername);
+  }
+ 
 }
 
