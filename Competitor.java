@@ -32,7 +32,10 @@ abstract public class Competitor {
 	public String getLevel(){			
 		return level;
 	}
-	 
+	public int[] setScore(int game, int score) {
+		scores[game] = score;
+		return scores;
+	}
 	
 	//Unique methods
 	public abstract double getOverallScore();
