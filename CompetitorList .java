@@ -179,6 +179,31 @@ public class CompetitorList {
 		  return null;
 		}
 
+	  //List in order of CN
+	  //From Syd
+	  public String CNList() { 
+		  String list ="";
+		  List<Double> CNList = new ArrayList();
+		  int NoComps = CompetitorList.size();
+		  for (Competitor c  : CompetitorList) {
+			 double n = c.getCompetitorNumber();
+			 CNList.add(n);			
+			}
+		  Collections.sort(CNList);
+		  for (int i = 0; i < NoComps; i++){
+			  double CNdouble = CNList.get(i);
+			  int CNint = (int) Math.round(CNdouble);
+			  for (Competitor n : CompetitorList) {
+					 if (n.getCompetitorNumber() == (CNint)){ 
+						 list += String.format("%-4s", n.getCompetitorNumber());
+						 list += String.format("%-20s",n.getCompName().getFullName());
+						 list += "\n";
+						}
+					}
+			  }  
+		  return list;
+		  }    
+
 		//Show Level & ID for GUI
 		//From Sheron
 		public String showLevel(){
