@@ -3,9 +3,10 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;  
-import java.util.Collections;
 
 public class CompetitorList {
 	
@@ -38,7 +39,7 @@ public class CompetitorList {
 	 * Demonstrates traversing the array, getting one element at a time
 	 * @return report 
 	 */
-	
+
 	public String getTableOfCompetitors() {
 		String report = ""; int i = 0;
 				for (Competitor c  : CompetitorList) {
@@ -73,9 +74,7 @@ public class CompetitorList {
 		}
 		report += "\n And the Winner is " + winner;
 		return report;		
-	}	
-	
-	  
+	}
 	     /**Returns report with one line per competitor
 	     * Demonstrates traversing the array, getting one element at a time
 	     * @return report
@@ -178,56 +177,23 @@ public class CompetitorList {
 			}
 		  return null;
 		}
-	
-			// Create String list details for sorting by name method
-		public String listDetails()
-	    	{
-	    	String allEntries = " ";
-	        for(Competitor c : CompetitorList) {
-	        	
-	        	allEntries += String.format("%-4s", c.getCompetitorNumber());
-	        	allEntries += String.format("%-10s",c.getCompName().getLastName());
-	        	allEntries += "," + String.format("%-10s", c.getCompName().getFirstName()) + String.format("%-10s", c.getCompName().getMiddleName());
-	        	allEntries += "\n";
-	        }
-	        return allEntries;
-	    }
-		
-		 
-	// Sort the list by Last Name
-	    public String listByName()
-	    {
-	    	Collections.sort(CompetitorList, new NameComparator());
-	    	return this.listDetails();
-	    }	
+			
+			/**
+			 * counts the number of competitors in a specified level
+			 * @param level
+			 * @return count of Competitors at requested level
+			 */
+//	  public int getCountOfCompetitorsAtLevel(int level) {
+//		  int count = 0;
+//			  for (Competitor c:CompetitorList) {
+//			     if (c.getLevel()==level) {
+//					 count++;}
+//				}
+//			 return count;
+//			}
 
-	  //List in order of CN
-	  //From Syd
-	  public String CNList() { 
-		  String list ="";
-		  List<Double> CNList = new ArrayList();
-		  int NoComps = CompetitorList.size();
-		  for (Competitor c  : CompetitorList) {
-			 double n = c.getCompetitorNumber();
-			 CNList.add(n);			
-			}
-		  Collections.sort(CNList);
-		  for (int i = 0; i < NoComps; i++){
-			  double CNdouble = CNList.get(i);
-			  int CNint = (int) Math.round(CNdouble);
-			  for (Competitor n : CompetitorList) {
-					 if (n.getCompetitorNumber() == (CNint)){ 
-						 list += String.format("%-4s", n.getCompetitorNumber());
-						 list += String.format("%-20s",n.getCompName().getFullName());
-						 list += "\n";
-						}
-					}
-			  }  
-		  return list;
-		  }    
 
-		//Show Level & ID for GUI
-		//From Sheron
+//Show Level & ID for GUI	  
 		public String showLevel(){
 			String list = ""; int i = 0;
 			for (Competitor c  : CompetitorList) {
@@ -243,8 +209,7 @@ public class CompetitorList {
 			return list;
 		}	
 		
-		//Show OverallScore & ID for GUI
-		//From Sheron
+		//Show OverallScore & ID for GUI	
 		public String showOverallScore(){
 			String list = ""; int i = 0;
 			for (Competitor c  : CompetitorList) {
@@ -258,22 +223,131 @@ public class CompetitorList {
 			}
 			return list;	
 		}
-	
-
-			/**
-			 * counts the number of competitors in a specified level
-			 * @param level
-			 * @return count of Competitors at requested level
-			 */
-//	  public int getCountOfCompetitorsAtLevel(int level) {
-//		  int count = 0;
-//			  for (Competitor c:CompetitorList) {
-//			     if (c.getLevel()==level) {
-//					 count++;}
-//				}
-//			 return count;
-//			}
-			
+		
+	    public String listDetails()
+	    {
+	    	String allEntries = " ";
+	        for(Competitor c : CompetitorList) {
+	        	
+	        	allEntries += String.format("%-4s", c.getCompetitorNumber());
+	        	allEntries += String.format("%-10s",c.getCompName().getLastName());
+	        	allEntries += "," + String.format("%-10s", c.getCompName().getFirstName()) + String.format("%-10s", c.getCompName().getMiddleName());
+	        	allEntries += "\n";
+	        }
+	        return allEntries;
+	    }
+		
+		 /**
+	     * @return All the staff details in name order
+	     */
+	    public String listByName()
+	    {
+	    	Collections.sort(CompetitorList, new NameComparator());
+	    	return this.listDetails();
+	    }
+	    
+	    /**
+	     * @return All the staff details in id order
+	     */
+	    public String CNList() { 
+			  String list ="";
+			  List<Double> CNList = new ArrayList();
+			  int NoComps = CompetitorList.size();
+			  for (Competitor c  : CompetitorList) {
+				 double n = c.getCompetitorNumber();
+				 CNList.add(n);			
+				}
+			  Collections.sort(CNList);
+			  for (int i = 0; i < NoComps; i++){
+				  double CNdouble = CNList.get(i);
+				  int CNint = (int) Math.round(CNdouble);
+				  for (Competitor n : CompetitorList) {
+						 if (n.getCompetitorNumber() == (CNint)){ 
+							 list += String.format("%-4s", n.getCompetitorNumber());
+							 list += String.format("%-20s",n.getCompName().getFullName());
+							 list += "\n";
+							}
+						}
+				  }  
+			  return list;
+	} 
+	  //Method return the competitor details in VCACompetitor 
+	    //By Sheron
+	  public String showvcalist(){
+		    String vlist = ""; 
+     		int i = 0;
+		  for (Competitor c : CompetitorList){
+			  if (c instanceof VCACompetitor){
+				  if (i == 0){
+						vlist += String.format("%-4s", "CN");
+						vlist += String.format("%-30s", "Name");
+						vlist += String.format("%-15s", "Level");
+						vlist += String.format("%-20s", "Scores");
+						vlist += String.format("%-10s", c.getAttributeName()+" \n");
+						i++;
+				  		}
+						vlist += String.format("%-4s", c.getCompetitorNumber());
+						vlist += String.format("%-30s",c.getCompName().getFullName());
+						vlist += String.format("%-15s", c.getLevel());
+						vlist += String.format("%-20s", Arrays.toString(c.getScoreArray()));
+						vlist += String.format("%-10s", c.getAttribute());
+						vlist += "\n";
+					}
+			 }
+		  return vlist;	
+		  }
+	  //Method return the competitor details in SHCCompetitor 
+	    //By Sheron
+	  public String showshclist(){
+		    String sclist = ""; 
+   		int i = 0;
+		  for (Competitor c : CompetitorList){
+			  if (c instanceof SHCCompetitor){
+				  if (i == 0){
+						sclist += String.format("%-4s", "CN");
+						sclist += String.format("%-30s", "Name");
+						sclist += String.format("%-15s", "Level");
+						sclist += String.format("%-20s", "Scores");
+						sclist += String.format("%-10s", c.getAttributeName()+" \n");
+						i++;
+				  		}
+						sclist += String.format("%-4s", c.getCompetitorNumber());
+						sclist += String.format("%-30s",c.getCompName().getFullName());
+						sclist += String.format("%-15s", c.getLevel());
+						sclist += String.format("%-20s", Arrays.toString(c.getScoreArray()));
+						sclist += String.format("%-10s", c.getAttribute());
+						sclist += "\n";
+					}
+			 }
+		  return sclist;	
+		  }
+	  //Method return the competitor details in SHCCompetitor
+	    //By Sheron
+	  public String showstlist(){
+		    String slist = ""; 
+   		int i = 0;
+		  for (Competitor c : CompetitorList){
+			  if (c instanceof STCompetitor){
+				  if (i == 0){
+						slist += String.format("%-4s", "CN");
+						slist += String.format("%-30s", "Name");
+						slist += String.format("%-15s", "Level");
+						slist += String.format("%-20s", "Scores");
+						slist += String.format("%-10s", c.getAttributeName()+" \n");
+						i++;
+				  		}
+						slist += String.format("%-4s", c.getCompetitorNumber());
+						slist += String.format("%-30s",c.getCompName().getFullName());
+						slist += String.format("%-15s", c.getLevel());
+						slist += String.format("%-20s", Arrays.toString(c.getScoreArray()));
+						slist += String.format("%-10s", c.getAttribute());
+						slist += "\n";
+					}
+			 }
+		  return slist;	
+		  }
+	  
+	  
 			/**
 			 * writes supplied text to file	
 			 * @param filename the name of the file to be written to 
@@ -303,63 +377,62 @@ public class CompetitorList {
 				  * Validation for integer level,missing items
 				  * @param filename the name of the input file
 				  */
-		  public void readFile (String filename) {
-			  try {
-				  char compType = filename.charAt(0);
-				  File f = new File(filename);
-				  Scanner scanner = new Scanner(f);
-				  while (scanner.hasNextLine()) {
-					  String inputLine = scanner.nextLine();
-					  if (inputLine.length() != 0) { 
-						  processLine(inputLine, String.valueOf(compType));
-					  }					 
-				  }
-				  scanner.close();
-			 }
-					/**
-					 * if the file is not found, stop with system exit
-					 */					
-
-			   catch (FileNotFoundException fnf){
-						System.out.println( filename + " not found ");
-						System.exit(0);
+	  public void readFile (String filename) {
+		  try {
+			  char compType = filename.charAt(0);
+			  File f = new File(filename);
+			  Scanner scanner = new Scanner(f);
+			  while (scanner.hasNextLine()) {
+				  String inputLine = scanner.nextLine();
+				  if (inputLine.length() != 0) { 
+					  processLine(inputLine, String.valueOf(compType));
+				  }					 
 			  }
-		  }
-		  
-	
-				
+			  scanner.close();
+		 }
 				/**
-				 * Processes line, extracts data, creates VCACompetitor object and adds to list
-				 * Checks for non-numeric competitor number or level and missing items
-				 * Will crash if name entered without a space
-				 * @param line to be processed
-				 * @return 
-				 */
-			private void processLine(String line, String type) {
-				try {
-					String parts [] = line.split(",");
-					int CompetitorNumber = Integer.parseInt(parts[0]);
-					String CompetitorName = parts[1];
-					String CompetitorLevel = parts[2];
-					 int scoresLength = 5; //parts.length - 5;
-					  int scores [] = new int [scoresLength]; 
-					  for (int index = 0; index < scoresLength; index++) {
-						  int i = index + 3;
-						 scores[index] = Integer.parseInt(parts[i]);}
-					String attribute = parts[8];//[parts.length-1];
-						  
-					//create Competitor object and add to the list
-						if (type.equals("C")){
-						SHCCompetitor c = new SHCCompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);
-						this.add(c);}
-						else if (type.equals("A")){
-						VCACompetitor c = new VCACompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);
-						this.add(c);}
-						else if (type.equals("T")){
-						STCompetitor c = new STCompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);
-						this.add(c);}	
-				}
-				
+				 * if the file is not found, stop with system exit
+				 */					
+
+		   catch (FileNotFoundException fnf){
+					System.out.println( filename + " not found ");
+					System.exit(0);
+		  }
+	  }
+	  
+
+			
+			/**
+			 * Processes line, extracts data, creates VCACompetitor object and adds to list
+			 * Checks for non-numeric competitor number or level and missing items
+			 * Will crash if name entered without a space
+			 * @param line to be processed
+			 * @return 
+			 */
+		private void processLine(String line, String type) {
+			try {
+				String parts [] = line.split(",");
+				int CompetitorNumber = Integer.parseInt(parts[0]);
+				String CompetitorName = parts[1];
+				String CompetitorLevel = parts[2];
+				 int scoresLength = 5; //parts.length - 5;
+				  int scores [] = new int [scoresLength]; 
+				  for (int index = 0; index < scoresLength; index++) {
+					  int i = index + 3;
+					 scores[index] = Integer.parseInt(parts[i]);}
+				String attribute = parts[8];//[parts.length-1];
+					  
+				//create Competitor object and add to the list
+					if (type.equals("C")){
+					SHCCompetitor c = new SHCCompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);
+					this.add(c);}
+					else if (type.equals("A")){
+					VCACompetitor c = new VCACompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);
+					this.add(c);}
+					else if (type.equals("T")){
+					STCompetitor c = new STCompetitor(CompetitorNumber, CompetitorName, CompetitorLevel, scores, attribute);
+					this.add(c);}	
+			}
 				catch (ArrayIndexOutOfBoundsException air) {
 					String error = "Not enough items in  : '" + line
 					                        + "' index position : " + air.getMessage();
