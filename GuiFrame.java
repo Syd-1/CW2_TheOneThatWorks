@@ -2,7 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class GUIFrame extends JFrame implements ActionListener {
+public class GuiFrame extends JFrame implements ActionListener {
 
 	/**
 	 * GUI Frame for CompetitorList
