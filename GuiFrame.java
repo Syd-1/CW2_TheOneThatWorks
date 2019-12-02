@@ -2,7 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class GuiFrame extends JFrame implements ActionListener {
+public class GUIFrame extends JFrame implements ActionListener {
 
 	/**
 	 * GUI Frame for CompetitorList
@@ -12,11 +12,12 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    private CompetitorList complist;
 	    
 	    //GUI components
+	    JTextField  [] scoresF;
 	    JTextField result;
 	    JTextField searchField;
 	    JButton search;
 	    JScrollPane scrollList;
-	    JButton showListById, showListByName, close;
+	    JButton showListById, showListByName, update, close;
 	    JTextArea displayList;
 	    
 	    JButton showLevel, showOverallScore;
@@ -28,7 +29,7 @@ public class GuiFrame extends JFrame implements ActionListener {
 	     * Create the frame with its panels.
 	     * @param list	The staff list to be searched.
 	     */
-	    public GuiFrame (CompetitorList list)
+	    public GUIFrame (CompetitorList list)
 	    {
 	        this.complist = list;
 	        
@@ -40,6 +41,7 @@ public class GuiFrame extends JFrame implements ActionListener {
 			setupSouthPanel();
 			setupNorthPanel();
 			setupCenterPanel();
+			setupEastPanel();
 
 	        //pack and set visible
 	        pack();
@@ -56,7 +58,33 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        displayList.setEditable(false);
 	        scrollList = new JScrollPane(displayList);
 	        this.add(scrollList,BorderLayout.CENTER);
+	       
 	    }
+	        
+	   private void setupEastPanel() {
+	   JPanel eastPanel = new JPanel();
+	   eastPanel.setLayout(new GridLayout(6,2));
+	   
+	   JLabel scoresL = new JLabel("Scores");
+	   eastPanel.add(scoresL);
+	   JPanel scoresPanel = new JPanel();
+	   scoresF = new JTextField[5];
+	   	for (int i = 0; i < 5; i++) {
+	   		scoresF[i] = new JTextField(2);
+	   		
+	   		scoresPanel.add((scoresF[i]));
+	   	}
+	   	eastPanel.add(scoresPanel);
+	   	JLabel dummy = new JLabel("");
+	   	eastPanel.add(dummy);
+	   	update = new JButton ("Update");
+	   	update.addActionListener(this);
+	   	update.setEnabled(false);
+	   	eastPanel.add(update);
+	   
+	   this.add(eastPanel, BorderLayout.EAST); 
+	   	}
+	   
 	    
 	    private void setupSouthPanel() {
 	        //search panel contains label, text field and button
