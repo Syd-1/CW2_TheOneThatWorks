@@ -184,9 +184,9 @@ public class GUIFrame extends JFrame implements ActionListener {
 	    		//displayList.setText("Show");
 	    		search();
 	    	}
-//	    	else if (e.getSource() == showListById) {
-//	    		displayList.setText(staffList.listByID());
-//	    	}
+	    	else if (e.getSource() == showListById) {
+	    		displayList.setText(complist.CNList());	    		
+	    	}
 //	    	else if (e.getSource() == showListByName ) {
 //	    		displayList.setText(staffList.listByName());
 //	    	}
