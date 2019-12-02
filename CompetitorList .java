@@ -178,6 +178,28 @@ public class CompetitorList {
 			}
 		  return null;
 		}
+	
+			// Create String list details for sorting by name method
+		public String listDetails()
+	    	{
+	    	String allEntries = " ";
+	        for(Competitor c : CompetitorList) {
+	        	
+	        	allEntries += String.format("%-4s", c.getCompetitorNumber());
+	        	allEntries += String.format("%-10s",c.getCompName().getLastName());
+	        	allEntries += "," + String.format("%-10s", c.getCompName().getFirstName()) + String.format("%-10s", c.getCompName().getMiddleName());
+	        	allEntries += "\n";
+	        }
+	        return allEntries;
+	    }
+		
+		 
+	// Sort the list by Last Name
+	    public String listByName()
+	    {
+	    	Collections.sort(CompetitorList, new NameComparator());
+	    	return this.listDetails();
+	    }	
 
 	  //List in order of CN
 	  //From Syd
@@ -236,7 +258,8 @@ public class CompetitorList {
 			}
 			return list;	
 		}
-			
+	
+
 			/**
 			 * counts the number of competitors in a specified level
 			 * @param level
