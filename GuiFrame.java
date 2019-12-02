@@ -1,6 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.Arrays;
 
 public class GuiFrame extends JFrame implements ActionListener {
 
@@ -14,25 +15,20 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    //GUI components
 	    JTextField  [] scoresF;
 	    JTextField result, result2, result3;
+	    
 	    JTextField  searchField, searchField1, searchField2, searchField3;
 	    JButton search, search2;
+	    
 	    JScrollPane scrollList;
+	    
 	    JButton showListById, showListByName,close;
 	    JTextArea displayList;
-	    JButton showLevel, showOverallScore;
+	    
 	    JButton update, game, score;
 	    
-	   
-	   
-	   
-	   
-	   
-	   
-	    
-	   
-	    
-//	    //also create grid of buttons
-//	    GridOfButtonsFrame gobf; 
+	    JButton showLevel, showOverallScore;
+	     
+	    JButton vcaCompList, shcCompList, stCompList;
 	    
 	    /**
 	     * Create the frame with its panels.
@@ -56,9 +52,6 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        pack();
 	        setVisible(true);
 	        
-//	        gobf = new GridOfButtonsFrame(complist);
-//	        gobf.pack(); 
-//	        gobf.setVisible(true);
 	    }
 	    
 	    private void setupCenterPanel() {
@@ -67,67 +60,51 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        displayList.setEditable(false);
 	        scrollList = new JScrollPane(displayList);
 	        this.add(scrollList,BorderLayout.CENTER);
-	       
 	    }
-	   private void setupEastPanel() {
-		   
-	   JPanel eastPanel = new JPanel();
-	   eastPanel.setLayout(new GridLayout(6,2)); 
-	   eastPanel.add(new JLabel("Update scores"));
-	   eastPanel.add(new JLabel(""));
-	   eastPanel.add(new JLabel(""));
-	   eastPanel.add(new JLabel("Enter CN"));
-	   searchField1 = new JTextField(5);
-	   eastPanel.add(searchField1); 
-	   search2 = new JButton("Search");  
-       eastPanel.add(search2);
-       search2.addActionListener(this) ;
-       eastPanel.add(new JLabel(""));
-  
-	   result3 = new JTextField(10); 
-	   eastPanel.add(result3);
-       result3.setEditable(false);
-       eastPanel.add(new JLabel(""));
-	   eastPanel.add(new JLabel("game (1 to 5)"));
-	   searchField2 = new JTextField(5);
-	   eastPanel.add(searchField2); 
-	   eastPanel.add(new JLabel(""));
-	   eastPanel.add(new JLabel("score"));
-	   searchField3 = new JTextField(5);
-	   eastPanel.add(searchField3); 
-	   
-	   result2 = new JTextField(10);     
-       result2.setEditable(false);
-       
-	   update = new JButton("Update");  
-       eastPanel.add(update); 
-       update.addActionListener(this);
-       eastPanel.add(new JLabel(""));
-       eastPanel.add(result2);
-	   
-       
-	   this.add(eastPanel, BorderLayout.EAST); 
-   	}
-	   
-	   private void update() {
-		   String searchString1 = searchField.getText().trim();
-		   Competitor c = complist.findByCompNumber(Integer.parseInt(searchString1));
-		   
-		   String searchString2 = searchField.getText().trim();
-		   int game = Integer.parseInt(searchString2);
-		   String searchString3 = searchField.getText().trim();
-		   int score = Integer.parseInt(searchString3);
-		   c.setScore(game, score);
-		   result.setText(String.format("-5.2f", c.getOverallScore()));	   
-	   }
-	   private void search2() {
-		   String searchString1 = searchField.getText().trim();
-		   Competitor c = complist.findByCompNumber(Integer.parseInt(searchString1));
-		   result.setText(Arrays.toString(c.getScoreArray()));
-		     
-	   }
+	    
+	    private void setupEastPanel() {
+			   
+	 	   JPanel eastPanel = new JPanel();
+	 	   eastPanel.setLayout(new GridLayout(6,2)); 
+	 	   eastPanel.add(new JLabel("Update scores"));
+	 	   eastPanel.add(new JLabel(""));
+	 	   eastPanel.add(new JLabel(""));
+	 	   eastPanel.add(new JLabel("Enter CN"));
+	 	   searchField1 = new JTextField(5);
+	 	   eastPanel.add(searchField1); 
+	 	   
+	 	   search2 = new JButton("Search");  
+	       eastPanel.add(search2);
+	       search2.addActionListener(this) ;
+	       eastPanel.add(new JLabel(""));
+	 	   result3 = new JTextField(10); 
+	 	   eastPanel.add(result3);
+	 	   result3.setEditable(false);
+	 	   
+	       eastPanel.add(new JLabel(""));
+	 	   eastPanel.add(new JLabel("game (1 to 5)"));
+	 	   searchField2 = new JTextField(5);
+	 	   eastPanel.add(searchField2); 
+	 	   
+	 	   eastPanel.add(new JLabel(""));
+	 	   eastPanel.add(new JLabel("score"));
+	 	   searchField3 = new JTextField(5);
+	 	   eastPanel.add(searchField3); 
+	 	   
+	 	   result2 = new JTextField(10);     
+	       result2.setEditable(false);
 	        
-	   
+	 	    update = new JButton("Update");  
+	        eastPanel.add(update); 
+	        update.addActionListener(this);
+	        eastPanel.add(new JLabel(""));
+	        eastPanel.add(result2);
+	 	   
+	        
+	 	   this.add(eastPanel, BorderLayout.EAST); 
+	    	}
+	 	   
+
 	    
 	    private void setupSouthPanel() {
 	        //search panel contains label, text field and button
@@ -157,7 +134,7 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    
 	    private void setupNorthPanel() {
 	        //add north panel containing some buttons
-	        JPanel northPanel = new JPanel();
+	        JPanel northPanel = new JPanel(new GridLayout(2,5));
 	        showListById = new JButton("List By ID");
 	        showListById.addActionListener(this);
 	        
@@ -171,6 +148,19 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        showOverallScore = new JButton("Show Overall Score");
 	        showOverallScore.addActionListener(this);
 	        
+	        //vcaCompList, shcCompList, stCompList;
+	        vcaCompList = new JButton("Show VCACompetitor");
+	        vcaCompList.addActionListener(this);
+	       
+	        shcCompList = new JButton("Show SHCCompetitor");
+	        shcCompList.addActionListener(this);
+	      
+
+	        stCompList = new JButton("Show STCompetitor");
+	        stCompList.addActionListener(this);
+	       
+	        
+	        //Close Button
 	        close = new JButton("Close");
 	        close.addActionListener(this);
 	        
@@ -178,9 +168,13 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        northPanel.add(showListByName);
 	        northPanel.add(showLevel);
 	        northPanel.add(showOverallScore);
+	        northPanel.add(vcaCompList);
+	        northPanel.add(shcCompList);
+	        northPanel.add(stCompList);
 	        northPanel.add(close);
 	        this.add(northPanel, BorderLayout.NORTH);
 	    }
+	    
 	    
 	    //come here when button is clicked
 	    //find which button and act accordingly
@@ -190,11 +184,11 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    		//displayList.setText("Show");
 	    		search();
 	    	}
-	    	else if (e.getSource() == showListById) {
-	    		displayList.setText(complist.CNList());	    		
+		    else if (e.getSource() == showListById) {
+	    	displayList.setText(complist.CNList()); 
 	    	}
 	    	else if (e.getSource() == showListByName ) {
-	    		displayList.setText(staffList.listByName());
+    		displayList.setText(complist.listByName());
 	    	}
 	    	else if (e.getSource() == showLevel) {
 	    		displayList.setText(complist.showLevel());
@@ -202,12 +196,16 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    	else if (e.getSource() == showOverallScore) {
 	    		displayList.setText(complist.showOverallScore());
 	    	}
-	    	else if (e.getSource() == close) {
-	    		JOptionPane.showMessageDialog(this, 
-	    				 "Do 'end of program' things instead of showing this");
-	    		System.exit(0);
+	    	else if (e.getSource() == vcaCompList){
+	    		displayList.setText(complist.showvcalist());
 	    	}
-		else if(e.getSource() == search2) {
+	    	else if (e.getSource() == shcCompList){
+	    		displayList.setText(complist.showshclist());
+	    	}
+	    	else if (e.getSource() == stCompList){
+	    		displayList.setText(complist.showstlist());
+	    	}
+	    	else if(e.getSource() == search2) {
 	    		//displayList.setText("Show");
 	    		search2();
 	    	}
@@ -215,11 +213,17 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    		//displayList.setText("Show");
 	    		update();
 	    	}
+	    	else if (e.getSource() == close) {
+	    		JOptionPane.showMessageDialog(this, 
+	    				 "Do 'end of program' things instead of showing this");
+	    		System.exit(0);
+	    	}
 	    }  
 	  
 	    private void search() {
 	    	//get search text and search comp list
 	    	//setting result text 
+	    	try {
 	        String searchString = searchField.getText().trim();
 	        if(searchString.length() > 0) {
 	        	Competitor person = complist.findByCompNumber(Integer.parseInt(searchString));
@@ -232,6 +236,43 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        }   
 	        else
 	        	result.setText("no text entered");
-	    }
-
+	    	}	
+	    
+		catch (NumberFormatException nfe) {
+			String error = "Number conversion error " + nfe.getMessage();
+			System.out.println(error);
+			}
+		}
+	    	
+	 	   private void update() {
+	 		  try {
+	 		   String searchString1 = searchField.getText().trim();
+	 		   Competitor c = complist.findByCompNumber(Integer.parseInt(searchString1));
+	 		   
+	 		   String searchString2 = searchField.getText().trim();
+	 		   int game = Integer.parseInt(searchString2);
+	 		   String searchString3 = searchField.getText().trim();
+	 		   int score = Integer.parseInt(searchString3);
+	 		   c.setScore(game, score);
+	 		   result2.setText(String.format("-5.2f", c.getOverallScore()));	   
+	 	   }
+	 	   
+			catch (NumberFormatException nfe) {
+				String error = "Number conversion error " + nfe.getMessage();
+				System.out.println(error);
+				}
+	 	   }
+	 	   private void search2() {
+	 		  try {
+	 		   String searchString1 = searchField.getText().trim();
+	 		   Competitor c = complist.findByCompNumber(Integer.parseInt(searchString1));
+	 		   String score = String.format("%-20s",Arrays.toString(c.getScoreArray()));
+	 		   result3.setText(score);
+	 		  }
+				catch (NumberFormatException nfe) {
+					String error = "Number conversion error " + nfe.getMessage();
+					System.out.println(error);
+					}
+	 		     
+	 	   }
 }
