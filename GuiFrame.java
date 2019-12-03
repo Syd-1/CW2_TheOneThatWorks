@@ -293,7 +293,7 @@ public class GuiFrame extends JFrame implements ActionListener {
 		 		   String inputStringScore = searchField3.getText().trim();
 		 		   int score = Integer.parseInt(inputStringScore);
 		 		   c.setScore(game, score);
-		 		   result2.setText(Double.toString(c.getOverallScore()));
+		 		   result2.setText(Double.toString(Math.round(c.getOverallScore() * 100.0) / 100.0));
 	 		   }
 	 		   else {result2.setText("CN not valid.");}
 	 		   }
