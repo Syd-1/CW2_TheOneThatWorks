@@ -76,10 +76,12 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    /**
 	     * Set up the east panel. All labels, search buttons and result windows are added.
 	     * Set up the update button in order to update the scores
+	     * Set up the search button to sort competitors by their level
 	     * @param 	search2 the search button2 
 	     * @param 	result3 the result from search2
-	     * @param 	result2 the result 
+	     * @param 	result2 the result from updating the scores of a competitor
 	     * @param 	update the result from result2
+	     * @param 	search4 the search button3
 	     */
 	    private void setupEastPanel() {
 	 	   JPanel eastPanel = new JPanel();
@@ -95,7 +97,8 @@ public class GuiFrame extends JFrame implements ActionListener {
 	 	   eastPanel.add(searchField1); 
 	 	   search2 = new JButton("Search");  
 	           eastPanel.add(search2); 
-	           search2.addActionListener(this) ;
+	           search2.addActionListener(this);
+		    
 	 	   result3 = new JTextField(10); 
 	 	   eastPanel.add(result3);
 		   result3.setEditable(false);
@@ -109,6 +112,7 @@ public class GuiFrame extends JFrame implements ActionListener {
 	 	   eastPanel.add(new JLabel("score"));
 	 	   searchField3 = new JTextField(5);
 	 	   eastPanel.add(searchField3); 
+		    
 	 	   result2 = new JTextField(10);     
 	           result2.setEditable(false);
 		    
@@ -117,22 +121,20 @@ public class GuiFrame extends JFrame implements ActionListener {
 	           update.addActionListener(this);
 	           eastPanel.add(result2);
 	 	   
-	      //search panel contains label
+	      
 	        eastPanel.add(new JLabel ("Competitors by Level"));
 	        eastPanel.add(new JLabel(""));
-		 	eastPanel.add(new JLabel(""));
-		 	eastPanel.add(new JLabel(""));
-		 //search panel contains label, text field and button   
+		eastPanel.add(new JLabel(""));
+		eastPanel.add(new JLabel("")); 
 	        eastPanel.add(new JLabel("Enter Level"));
-		 	searchField4 = new JTextField(5);
-		 	eastPanel.add(searchField4); 
-		 	search4 = new JButton("Search");  
-		    eastPanel.add(search4);
-		  //specify action when button is pressed
-		    search4.addActionListener(this) ;
+		     
+		 searchField4 = new JTextField(5);
+		 eastPanel.add(searchField4); 
+		 search4 = new JButton("Search");  
+		 eastPanel.add(search4);
+		 search4.addActionListener(this) ;
 	        
-		  //add east panel to the content pane
-	 	   this.add(eastPanel, BorderLayout.EAST); 
+	 	 this.add(eastPanel, BorderLayout.EAST); 
 	    	}
 	 	    
 	    private void setupSouthPanel() {
