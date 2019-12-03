@@ -67,50 +67,56 @@ public class GuiFrame extends JFrame implements ActionListener {
 	 	   JPanel eastPanel = new JPanel();
 	 	   eastPanel.setLayout(new GridLayout(6,2)); 
 	 	   eastPanel.add(new JLabel("Update scores"));
-	 	   eastPanel.add(new JLabel(""));
-	 	
 	 	   
+	 	   eastPanel.add(new JLabel(""));
+	 	   eastPanel.add(new JLabel(""));
+	 	   eastPanel.add(new JLabel(""));
+	
 	 	   eastPanel.add(new JLabel("Enter CN"));
 	 	   searchField1 = new JTextField(5);
 	 	   eastPanel.add(searchField1); 
 	 	   search2 = new JButton("Search");  
-	       eastPanel.add(search2); 
-	       search2.addActionListener(this) ;
+	           eastPanel.add(search2); 
+	           search2.addActionListener(this) ;
 	       
-	       eastPanel.add(new JLabel(""));
 	 	   result3 = new JTextField(10); 
 	 	   eastPanel.add(result3);
 	 	   result3.setEditable(false);
-	 	   
-	       eastPanel.add(new JLabel(""));
+	 
 	 	   eastPanel.add(new JLabel("game (1 to 5)"));
 	 	   searchField2 = new JTextField(5);
 	 	   eastPanel.add(searchField2); 
 	 	   
+	 	   eastPanel.add(new JLabel(""));
 	 	   eastPanel.add(new JLabel(""));
 	 	   eastPanel.add(new JLabel("score"));
 	 	   searchField3 = new JTextField(5);
 	 	   eastPanel.add(searchField3); 
 	 	   
 	 	   result2 = new JTextField(10);     
-	       result2.setEditable(false);
+	           result2.setEditable(false);
 	        
-	 	    update = new JButton("Update");  
-	        eastPanel.add(update); 
-	        update.addActionListener(this);
-	        eastPanel.add(new JLabel(""));
-	        eastPanel.add(result2);
+	 	   update = new JButton("Update");  
+	           eastPanel.add(update); 
+	           update.addActionListener(this);
+	           eastPanel.add(result2);
 	 	   
 	        
-	        eastPanel.add(new JLabel("Enter Level"));
-		 	searchField4 = new JTextField(5);
-		 	eastPanel.add(searchField4); 
-		 	search4 = new JButton("Search");  
-		    eastPanel.add(search4);
-		    search4.addActionListener(this) ;
+	          eastPanel.add(new JLabel ("Competitors by Level"));
+	          eastPanel.add(new JLabel(""));
+		  eastPanel.add(new JLabel(""));
+		  eastPanel.add(new JLabel(""));
+		 	   
+	          eastPanel.add(new JLabel("Enter Level"));
+		  searchField4 = new JTextField(5);
+		  eastPanel.add(searchField4); 
+		  search4 = new JButton("Search");  
+		  eastPanel.add(search4);
+		  search4.addActionListener(this) ;
 	        
 	 	   this.add(eastPanel, BorderLayout.EAST); 
 	    	}
+	 	   
 	 	   
 
 	    
