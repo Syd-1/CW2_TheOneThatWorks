@@ -15,14 +15,14 @@ public class CompetitorList {
 	public CompetitorList() {
 		CompetitorList = new ArrayList<Competitor> (); }
 	
-	public void add(Competitor c) {CompetitorList.add(c); }
 	/**
-	 * Adds vcacompetitor to the list, if there is not already one there
-	 * with the same ID
-	 * @param c the Competitor to be added
-	 * @return true if vcaCompetitor was added to the list,
-	 	* false if already there 
+	 * Adds competitor to the list
+	 * @param c the Competitor to be added when it is not exists in the list
+	 * @return true if competitor is added to the list,
+	 	* false if the competitor exists. 
 	 */
+	public void add(Competitor c) {CompetitorList.add(c); }
+
 	public boolean addOneCompetitor(Competitor c) {
 				
 		int CN = c.getCompetitorNumber();
@@ -34,10 +34,10 @@ public class CompetitorList {
 		return false;
 	  }
 	
-	/**
-	 * Returns report with one line per competitor
-	 * Demonstrates traversing the array, getting one element at a time
-	 * @return report 
+	/**Creating a table for the report to manager, showing all the competitors input.
+	 * Table Index calling abstract method from competitor to get the name of Attribute
+	 * Calling methods from competitor class to get CN, Name, Level, Scores and Attribute
+	 * @return report including all the information inputed from competitors in a table format.
 	 */
 
 	public String getTableOfCompetitors() {
@@ -61,6 +61,12 @@ public class CompetitorList {
 				return report;	
 			}
 	
+	/**Creating a report with short details of all competitors, and showing the Winner to Manager.
+	 * Get Overall Score from the abstract method in subclasses.
+	 * Get Short Details from the super class.
+	 * @return report including all the short details with overall score, and the winner in a table format.
+	 */
+	
 	public String getCompetitorReport(){
 		String report = "";
 		double maxScore = 0;
@@ -75,13 +81,9 @@ public class CompetitorList {
 		report += "\n And the Winner is " + winner;
 		return report;		
 	}
-	     /**Returns report with one line per competitor
-	     * Demonstrates traversing the array, getting one element at a time
-	     * @return report
-	     */ 
 
 	     /**
-	      * return the higher average in the competition
+	      * return the maximum score among all competitors
 	      * @return maximum score 
 	      */
 	  public double getWinnerAvg() {
@@ -95,9 +97,8 @@ public class CompetitorList {
 	   }
 	  
 			/**
-			 * return the competitor with the highest average
-			 * @return competitor if is in the list,
-			 	* return false if is not 
+			 * Find the competitor that wins the competition.
+			 * @return the competitor with the maximum score
 			 */
 	  public Competitor getWinName() {
 		  for (Competitor c : CompetitorList) {
@@ -110,7 +111,7 @@ public class CompetitorList {
 	  
 
 			/**
-			 * returns the number of elements in the list			
+			 * returns the number of elements in the Competitor list			
 			 * @return size
 			 */
 	  public int getSize() {
@@ -118,8 +119,8 @@ public class CompetitorList {
 		}
 			/**
 			 * returns the competitor object at specified index position
-			 * @param index
-			 * @return vcaCompetitor  at Index
+			 * @param index (input)
+			 * @return competitor for particular index
 			 */
 			
 	  public Competitor getAtIndex(int index) {
@@ -129,8 +130,8 @@ public class CompetitorList {
 			/**
 			 * Returns the Competitor object with a specific competitor number
 			 * demonstrates searching through the array and stopping by returning when a match is found
-			 * @param CN
-			 * @return competitor by CompNumber
+			 * @param CN (input)
+			 * @return the competitor with the particular competitor number
 			 */
 			
 	  public Competitor findByCompNumber(int CN){
@@ -141,7 +142,12 @@ public class CompetitorList {
 		  return null;
 		}
 			
-//Show Level & ID for GUI	  
+		/**
+		 * Method for "Show Level" button in Gui
+		 * Create a list with Competitor number and Level
+		 * @param list the display list in Gui
+		 * @return the list with competitor number and level for all competitors
+		 */  
 		public String showLevel(){
 			String list = ""; int i = 0;
 			for (Competitor c  : CompetitorList) {
@@ -159,7 +165,12 @@ public class CompetitorList {
 		}	
 	  
 				
-		//Show Level & ID for GUI	  
+		/**
+		 * Method for "Show Level" button in Gui
+		 * Create a list with Competitor number and Level
+		 * @param list the display list in Gui
+		 * @return the list with competitor number and level for all competitors
+		 */   
 		public String showSetLevel(String input){
 			String list = ""; 
 			list += String.format("%-4s", "CN");
@@ -175,7 +186,12 @@ public class CompetitorList {
 			return list;
 		}
 		
-		//Show OverallScore & ID for GUI	
+		/**
+		 * Method for the getting all overall score
+		 * Create a list with Competitor number and Overall Score
+		 * @param list to be ordered in later methods
+		 * @return the list with competitor number and overall scores for all competitors
+		 */   
 		public String showOverallScore(){
 			String list = ""; int i = 0;
 			for (Competitor c  : CompetitorList) {
@@ -190,7 +206,12 @@ public class CompetitorList {
 			}
 			return list;	
 		}
-				
+		/**
+		 * Method for getting all competitor names
+		 * Create a list with Competitor numbers and names with the Format: "Last, First Middle"
+		 * @param list to be ordered in later methods
+		 * @return the list with competitor numbers and names for all competitors
+		 */ 		
 	    public String listDetails()
 	    {
 	    	String allEntries = "CN  Surname   Forename   Middlename";
@@ -203,25 +224,40 @@ public class CompetitorList {
 	        return allEntries;
 	    }
 		
-
+	    /**
+		 * Method for sorting Name in Ascending order
+		 * Call the NameComparator Class and competitor list to order the list in listDetails()
+		 * @return the ordered list from listDetails()
+		 */ 
 	    public String listByName()
 	    {
 	    	Collections.sort(CompetitorList, new NameComparator());
 	    	return this.listDetails();
 	    }
-	    
+	    /**
+		 * Method for sorting Overall Score in Ascending order
+		 * Call the OverallScoreComparator Class and competitor list to order the list in showOverallScore()
+		 * @return the ordered list from showOverallScore()
+		 */ 
 	    public String listByOverallScore()
 	    {
 	    	Collections.sort(CompetitorList, new OverallScoreComparator());
 	    	return this.showOverallScore();
 	    }
-	    
+	    /**
+		 * Method for sorting Overall Score Descending order
+		 * Call the OverallScoreComparator Class and competitor list to order the list in showOverallScore()
+		 * @return the ordered list from showOverallScore()
+		 */ 
 	    public String listByOverallScoreR()
 	    {
 	    	Collections.sort(CompetitorList, new OverallScoreComparator().reversed());
 	    	return this.showOverallScore();
 	    }
-
+	    /**
+		 * Method for sorting the list with competitor numbers and full names in Ascending order
+		 * @return the ordered list with all competitor numbers and full names
+		 */
 	    public String CNList() { 
 			  String list ="CN  NAME";
 			  List<Double> CNList = new ArrayList();
@@ -244,6 +280,10 @@ public class CompetitorList {
 				  }  
 			  return list;
 	}
+	    /**
+		 * Method for sorting the list with competitor numbers and full names in Descending order
+		 * @return the ordered list with all competitor numbers and full names
+		 */
 	    public String CNListR() { 
 			  String list ="CN  NAME";
 			  List<Double> CNList = new ArrayList();
@@ -268,8 +308,10 @@ public class CompetitorList {
 			  return list;
 	}
 	    
-	  //Method return the competitor details in VCACompetitor 
-	    //By Sheron
+	    /**
+		 * Method for calling the user details in the Subclass VCACompetitor
+		 * @return list of input data in VCACompetitor class
+		 */
 	  public String showvcalist(){
 		    String vlist = ""; 
      		int i = 0;
@@ -294,8 +336,10 @@ public class CompetitorList {
 			 }
 		  return vlist;	
 		  }
-	  //Method return the competitor details in SHCCompetitor 
-	    //By Sheron
+	    /**
+		 * Method for calling the user details in the Subclass SHCCompetitor
+		 * @return list of input data in SHCCompetitor class
+		 */
 	  public String showshclist(){
 		    String sclist = ""; 
    		int i = 0;
@@ -320,8 +364,10 @@ public class CompetitorList {
 			 }
 		  return sclist;	
 		  }
-	  //Method return the competitor details in STCompetitor
-	    //By Sheron
+	    /**
+		 * Method for calling the user details in the Subclass STCompetitor
+		 * @return list of input data in STCompetitor class
+		 */
 	  public String showstlist(){
 		    String slist = ""; 
    		int i = 0;
