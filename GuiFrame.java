@@ -1,4 +1,5 @@
-mport java.awt.*;
+
+import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.Arrays;
@@ -21,12 +22,12 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    
 	    JScrollPane scrollList;
 	    
-	    JButton showListById, showListByName,close;
+	    JButton ListByIdAsc, ListByIdDes, showListByName,close;
 	    JTextArea displayList;
 	    
 	    JButton update, game, score;
 	    
-	    JButton showLevel, showOverallScore;
+	    JButton showLevel, OverallScoreAsc, OverallScoreDes;
 	     
 	    JButton vcaCompList, shcCompList, stCompList, showAllList;
 	    
@@ -76,8 +77,8 @@ public class GuiFrame extends JFrame implements ActionListener {
 	 	   searchField1 = new JTextField(5);
 	 	   eastPanel.add(searchField1); 
 	 	   search2 = new JButton("Search");  
-	           eastPanel.add(search2); 
-	           search2.addActionListener(this) ;
+	       eastPanel.add(search2); 
+	       search2.addActionListener(this) ;
 	       
 	 	   result3 = new JTextField(10); 
 	 	   eastPanel.add(result3);
@@ -94,29 +95,28 @@ public class GuiFrame extends JFrame implements ActionListener {
 	 	   eastPanel.add(searchField3); 
 	 	   
 	 	   result2 = new JTextField(10);     
-	           result2.setEditable(false);
+	       result2.setEditable(false);
 	        
-	 	   update = new JButton("Update");  
-	           eastPanel.add(update); 
-	           update.addActionListener(this);
-	           eastPanel.add(result2);
+	 	    update = new JButton("Update");  
+	        eastPanel.add(update); 
+	        update.addActionListener(this);
+	        eastPanel.add(result2);
 	 	   
 	        
-	          eastPanel.add(new JLabel ("Competitors by Level"));
-	          eastPanel.add(new JLabel(""));
-		  eastPanel.add(new JLabel(""));
-		  eastPanel.add(new JLabel(""));
+	        eastPanel.add(new JLabel ("Competitors by Level"));
+	        eastPanel.add(new JLabel(""));
+		 	eastPanel.add(new JLabel(""));
+		 	eastPanel.add(new JLabel(""));
 		 	   
-	          eastPanel.add(new JLabel("Enter Level"));
-		  searchField4 = new JTextField(5);
-		  eastPanel.add(searchField4); 
-		  search4 = new JButton("Search");  
-		  eastPanel.add(search4);
-		  search4.addActionListener(this) ;
+	        eastPanel.add(new JLabel("Enter Level"));
+		 	searchField4 = new JTextField(5);
+		 	eastPanel.add(searchField4); 
+		 	search4 = new JButton("Search");  
+		    eastPanel.add(search4);
+		    search4.addActionListener(this) ;
 	        
 	 	   this.add(eastPanel, BorderLayout.EAST); 
 	    	}
-	 	   
 	 	   
 
 	    
@@ -149,8 +149,11 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    private void setupNorthPanel() {
 	        //add north panel containing some buttons
 	        JPanel northPanel = new JPanel(new GridLayout(2,5));
-	        showListById = new JButton("List By ID");
-	        showListById.addActionListener(this);
+	        ListByIdAsc = new JButton("List By ID Asc.");
+	        ListByIdAsc.addActionListener(this);
+	        
+	        ListByIdDes = new JButton("List By ID Des.");
+	        ListByIdDes.addActionListener(this);
 	        
 	        showListByName = new JButton("List By Name");
 	        showListByName.addActionListener(this);
@@ -159,8 +162,11 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        showLevel = new JButton("Show Level");
 	        showLevel.addActionListener(this);
         
-	        showOverallScore = new JButton("Show Overall Score");
-	        showOverallScore.addActionListener(this);
+	        OverallScoreAsc = new JButton("Overall Score Asc.");
+	        OverallScoreAsc.addActionListener(this);
+	        
+	        OverallScoreDes = new JButton("Overall Score Des.");
+	        OverallScoreDes.addActionListener(this);
 	        
 	        //vcaCompList, shcCompList, stCompList;
 	        vcaCompList = new JButton("Show VCACompetitor");
@@ -180,10 +186,12 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        close = new JButton("Close");
 	        close.addActionListener(this);
 	        
-	        northPanel.add (showListById);
+	        northPanel.add(ListByIdAsc);
+	        northPanel.add(ListByIdDes);
 	        northPanel.add(showListByName);
 	        northPanel.add(showLevel);
-	        northPanel.add(showOverallScore);
+	        northPanel.add(OverallScoreAsc);
+	        northPanel.add(OverallScoreDes);
 	        northPanel.add(vcaCompList);
 	        northPanel.add(shcCompList);
 	        northPanel.add(stCompList);
@@ -201,17 +209,23 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    		//displayList.setText("Show");
 	    		search();
 	    	}
-		    else if (e.getSource() == showListById) {
+		    else if (e.getSource() == ListByIdAsc) {
 	    	displayList.setText(complist.CNList()); 
 	    	}
+		    else if (e.getSource() == ListByIdDes) {
+		    	displayList.setText(complist.CNListR()); 
+		    	}
 	    	else if (e.getSource() == showListByName ) {
     		displayList.setText(complist.listByName());
 	    	}
 	    	else if (e.getSource() == showLevel) {
 	    		displayList.setText(complist.showLevel());
 	    	}
-	    	else if (e.getSource() == showOverallScore) {
-	    		displayList.setText(complist.showOverallScore());
+	    	else if (e.getSource() == OverallScoreAsc) {
+	    		displayList.setText(complist.listByOverallScore());
+	    	}
+	    	else if (e.getSource() == OverallScoreDes) {
+	    		displayList.setText(complist.listByOverallScoreR());
 	    	}
 	    	else if (e.getSource() == vcaCompList){
 	    		displayList.setText(complist.showvcalist());
@@ -243,6 +257,7 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    		displayList.setText(complist.showSetLevel(input));
 	    	}
 	    }  
+	  
 	  
 	    private void search() {
 	    	//get search text and search comp list
