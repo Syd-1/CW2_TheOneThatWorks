@@ -1,3 +1,4 @@
+//compares competitors on overall score
 import java.util.Comparator;
 
 public class OverallScoreComparator implements Comparator<Competitor>
