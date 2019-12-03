@@ -1,4 +1,4 @@
-//Compares names on competitor name
+//Compares competitors on competitor name
 import java.util.Comparator;
 
 
