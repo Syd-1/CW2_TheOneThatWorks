@@ -22,6 +22,9 @@ public class manager {
 		//create mainGUI with CompetitorList object
 		GuiFrame gui = new GuiFrame(complist);
 		gui.setVisible(true);
+		
+	System.out.println(complist.getTableOfCompetitors());
+	System.out.println(complist.getCompetitorReport());
 	}
 }
 
