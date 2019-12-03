@@ -1,24 +1,40 @@
 
+	 /**
+     * Subclass STCompetitor, Extends from the superclass "Competitor"
+     * @param 	nationality The attribute	
+     */   
+
 public class STCompetitor extends Competitor {
-	
+   
 	
 	private String age;
-	
+	 /**
+     * Set up the STCompetitor details
+     * Inherits details from the superclass "Competitor"
+     * @param 	age the additional attribute
+     */
 	//constructor
 	public STCompetitor(int CompetitorNumber, String CompetitorName , String CompetitorLevel, int[] Scores, String attribute) {
 		super(CompetitorNumber,CompetitorName, CompetitorLevel, Scores);
 		age = attribute;
 
 	}
-	
+	 /**
+     * Abstract Method of getting STCompetitor's age
+     */
 	//Method to get Competitor's information
-	//Level 1: Beginner; Level 2: Intermediate; Level 3: Advanced; Level 4: Expert
 	public String getAttribute() { return age; }
+	
+	 /**
+     * Abstract Method of getting the name of the attribute in STCompetitor "AGE"
+     */
 	public String getAttributeName() { return "AGE"; }
 
-	
-
-	
+	 /**
+     * Method of checking the level in STCompetitor
+     * @return If level = Advanced / Expert return True
+     * Return False if level = Beginner / Intermediate
+     */
 	//Method for checking level is needed
 	public boolean checkLevel() {
 		//see if Competitor has the level of Advanced / Expert
@@ -30,7 +46,12 @@ public class STCompetitor extends Competitor {
 		return false;
 		
 	}
-	
+	 /**
+     * Abstract method for getting overall score
+     * get the boolean result from checklevel()
+     * Multiply by bonus for level advanced / expert
+     * @return overall score
+     */
 	
 	//Method to get the overall score
 	//the overall score = (sum of all scores * mark of level / number of scores)
@@ -50,10 +71,6 @@ public class STCompetitor extends Competitor {
 		//return overall score 
 		return (double) total/sc.length;
 	};
-	
-	
-	
-
 	
 	
 }
