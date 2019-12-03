@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -64,7 +63,7 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    }
 	    
 	    private void setupEastPanel() {
-			   
+	    //search panel contains label
 	 	   JPanel eastPanel = new JPanel();
 	 	   eastPanel.setLayout(new GridLayout(6,2)); 
 	 	   eastPanel.add(new JLabel("Update scores"));
@@ -72,54 +71,59 @@ public class GuiFrame extends JFrame implements ActionListener {
 	 	   eastPanel.add(new JLabel(""));
 	 	   eastPanel.add(new JLabel(""));
 	 	   eastPanel.add(new JLabel(""));
-	
+	 	//search panel contains label, text field and button
 	 	   eastPanel.add(new JLabel("Enter CN"));
 	 	   searchField1 = new JTextField(5);
 	 	   eastPanel.add(searchField1); 
 	 	   search2 = new JButton("Search");  
 	       eastPanel.add(search2); 
+	     //specify action when button is pressed
 	       search2.addActionListener(this) ;
-	       
+	     //Set up the area where the results will be displayed.
 	 	   result3 = new JTextField(10); 
 	 	   eastPanel.add(result3);
 	 	   result3.setEditable(false);
 	 
+	 	//search panel contains label, text field and button
 	 	   eastPanel.add(new JLabel("game (1 to 5)"));
 	 	   searchField2 = new JTextField(5);
 	 	   eastPanel.add(searchField2); 
-	 	   
+	 	
 	 	   eastPanel.add(new JLabel(""));
 	 	   eastPanel.add(new JLabel(""));
+	 	//search panel contains label, text field and button
 	 	   eastPanel.add(new JLabel("score"));
 	 	   searchField3 = new JTextField(5);
 	 	   eastPanel.add(searchField3); 
 	 	   
+	 	//Set up the area where the results will be displayed.
 	 	   result2 = new JTextField(10);     
 	       result2.setEditable(false);
-	        
+	       
+	     //search panel contains label, text field and button  
 	 	    update = new JButton("Update");  
 	        eastPanel.add(update); 
 	        update.addActionListener(this);
 	        eastPanel.add(result2);
 	 	   
-	        
+	      //search panel contains label
 	        eastPanel.add(new JLabel ("Competitors by Level"));
 	        eastPanel.add(new JLabel(""));
 		 	eastPanel.add(new JLabel(""));
 		 	eastPanel.add(new JLabel(""));
-		 	   
+		 //search panel contains label, text field and button   
 	        eastPanel.add(new JLabel("Enter Level"));
 		 	searchField4 = new JTextField(5);
 		 	eastPanel.add(searchField4); 
 		 	search4 = new JButton("Search");  
 		    eastPanel.add(search4);
+		  //specify action when button is pressed
 		    search4.addActionListener(this) ;
 	        
+		  //add east panel to the content pane
 	 	   this.add(eastPanel, BorderLayout.EAST); 
 	    	}
-	 	   
-
-	    
+	 	    
 	    private void setupSouthPanel() {
 	        //search panel contains label, text field and button
 	        JPanel searchPanel = new JPanel();
@@ -149,26 +153,32 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    private void setupNorthPanel() {
 	        //add north panel containing some buttons
 	        JPanel northPanel = new JPanel(new GridLayout(2,5));
+	        
+	      //JButton lists competitors by id in ascending order 
 	        ListByIdAsc = new JButton("List By ID Asc.");
 	        ListByIdAsc.addActionListener(this);
 	        
+	      //JButton lists competitors by id in descending order
 	        ListByIdDes = new JButton("List By ID Des.");
 	        ListByIdDes.addActionListener(this);
 	        
+	      //JButton lists competitors by name
 	        showListByName = new JButton("List By Name");
 	        showListByName.addActionListener(this);
 	        
-	        //JButton showLevel, showOverallScore
+	       //JButton showLevel
 	        showLevel = new JButton("Show Level");
 	        showLevel.addActionListener(this);
-        
+	        
+	      //JButton shows id by overall scores in ascending order
 	        OverallScoreAsc = new JButton("Overall Score Asc.");
 	        OverallScoreAsc.addActionListener(this);
 	        
+	      //JButton shows id by overall scores in descending order
 	        OverallScoreDes = new JButton("Overall Score Des.");
 	        OverallScoreDes.addActionListener(this);
 	        
-	        //vcaCompList, shcCompList, stCompList;
+	        //vcaCompList, shcCompList, stCompList, all competitors list;
 	        vcaCompList = new JButton("Show VCACompetitor");
 	        vcaCompList.addActionListener(this);
 	       
@@ -186,6 +196,7 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        close = new JButton("Close");
 	        close.addActionListener(this);
 	        
+	        //Add buttons to North Pane
 	        northPanel.add(ListByIdAsc);
 	        northPanel.add(ListByIdDes);
 	        northPanel.add(showListByName);
@@ -197,6 +208,8 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        northPanel.add(stCompList);
 	        northPanel.add(showAllList);
 	        northPanel.add(close);
+	        
+	      //add north panel to the content pane
 	        this.add(northPanel, BorderLayout.NORTH);
 	    }
 	    
@@ -248,8 +261,8 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    		update();
 	    	}
 	    	else if (e.getSource() == close) {
-	    		JOptionPane.showMessageDialog(this, 
-	    				 "Do 'end of program' things instead of showing this");
+	    	//	JOptionPane.showMessageDialog(this, 
+	    	//			 "Do 'end of program' things instead of showing this");
 	    		System.exit(0);
 	    	}
 	    	else if (e.getSource() == search4) {
@@ -257,7 +270,6 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    		displayList.setText(complist.showSetLevel(input));
 	    	}
 	    }  
-	  
 	  
 	    private void search() {
 	    	//get search text and search comp list
@@ -329,3 +341,5 @@ public class GuiFrame extends JFrame implements ActionListener {
 	 
 	 	  
 }
+
+
