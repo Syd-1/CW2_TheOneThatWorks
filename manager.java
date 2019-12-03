@@ -13,6 +13,7 @@ public class manager {
 	}
 	
 	public void run(){
+		//Read competitor information from csv files
 		complist.readFile("T_Competitor.csv");
 		complist.readFile("A_Competitor.csv");
 		complist.readFile("C_competitor.csv");
@@ -23,7 +24,10 @@ public class manager {
 		GuiFrame gui = new GuiFrame(complist);
 		gui.setVisible(true);
 		
+	//Print out the report including all the information inputed from competitors in a table format	
 	System.out.println(complist.getTableOfCompetitors());
+		
+	//Print out the report including all the short details with overall score, and the winner in a table format	
 	System.out.println(complist.getCompetitorReport());
 	}
 }
