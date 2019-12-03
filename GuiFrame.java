@@ -244,33 +244,45 @@ public class GuiFrame extends JFrame implements ActionListener {
 			}
 		}
 	    	
-	 	   private void update() {
+ 		private void update() {
 	 		  try {
-	 		   String searchString1 = searchField.getText().trim();
+	 		   String searchString1 = searchField1.getText().trim();
 	 		   Competitor c = complist.findByCompNumber(Integer.parseInt(searchString1));
-	 		   
-	 		   String searchString2 = searchField.getText().trim();
-	 		   int game = Integer.parseInt(searchString2);
-	 		   String searchString3 = searchField.getText().trim();
-	 		   int score = Integer.parseInt(searchString3);
-	 		   c.setScore(game, score);
-	 		   result2.setText(String.format("-5.2f", c.getOverallScore()));	   
-	 	   }
+	 		   if (c != null){
+		 		   String inputStringGame = searchField2.getText().trim();
+		 		   int game = Integer.parseInt(inputStringGame)-1;
+		 		   String inputStringScore = searchField3.getText().trim();
+		 		   int score = Integer.parseInt(inputStringScore);
+		 		   c.setScore(game, score);
+		 		   result2.setText(Double.toString(c.getOverallScore()));
+	 		   }
+	 		   else {result2.setText("CN not valid.");}
+	 		   }
 	 	   
 			catch (NumberFormatException nfe) {
-				String error = "Number conversion error " + nfe.getMessage();
+				String error = "Number conversion error (update() function)" + nfe.getMessage();
 				System.out.println(error);
 				}
 	 	   }
+	 	   	   
+	 	   
 	 	   private void search2() {
 	 		  try {
-	 		   String searchString1 = searchField.getText().trim();
-	 		   Competitor c = complist.findByCompNumber(Integer.parseInt(searchString1));
-	 		   String score = String.format("%-20s",Arrays.toString(c.getScoreArray()));
-	 		   result3.setText(score);
+	 		   String searchString1 = searchField1.getText().trim();
+		        if(searchString1.length() > 0) {
+		        	Competitor person = complist.findByCompNumber(Integer.parseInt(searchString1));
+		            if (person != null ) {
+		            	result3.setText(Arrays.toString(person.getScoreArray()));  
+		            	//gobf.disableButton(person.getFullDetails());
+		            }
+		            else
+		            	result3.setText("not found");
+		        }   
+		        else
+		        	result3.setText("no text entered");
 	 		  }
 				catch (NumberFormatException nfe) {
-					String error = "Number conversion error " + nfe.getMessage();
+					String error = "Number conversion error (search 2 function) " + nfe.getMessage();
 					System.out.println(error);
 					}
 	 		     
