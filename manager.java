@@ -14,6 +14,8 @@ public class manager {
 	
 	public void run(){
 		complist.readFile("T_Competitor.csv");
+		complist.readFile("A_Competitor.csv");
+		complist.readFile("C_competitor.csv");
 	
 		//show GuiFrame
 		
