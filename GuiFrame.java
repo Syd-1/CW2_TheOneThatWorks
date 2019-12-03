@@ -1,4 +1,4 @@
-import java.awt.*;
+mport java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.Arrays;
@@ -16,8 +16,8 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    JTextField  [] scoresF;
 	    JTextField result, result2, result3;
 	    
-	    JTextField  searchField, searchField1, searchField2, searchField3;
-	    JButton search, search2;
+	    JTextField  searchField, searchField1, searchField2, searchField3, searchField4;
+	    JButton search, search2, search4;
 	    
 	    JScrollPane scrollList;
 	    
@@ -28,7 +28,7 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    
 	    JButton showLevel, showOverallScore;
 	     
-	    JButton vcaCompList, shcCompList, stCompList;
+	    JButton vcaCompList, shcCompList, stCompList, showAllList;
 	    
 	    /**
 	     * Create the frame with its panels.
@@ -45,7 +45,7 @@ public class GuiFrame extends JFrame implements ActionListener {
 	 
 			setupSouthPanel();
 			setupNorthPanel();
-			setupCenterPanel();
+			setupWestPanel();
 			setupEastPanel();
 
 	        //pack and set visible
@@ -54,8 +54,8 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        
 	    }
 	    
-	    private void setupCenterPanel() {
-	        displayList = new JTextArea(15,20);
+	    private void setupWestPanel() {
+	        displayList = new JTextArea(15,100);
 	        displayList.setFont(new Font (Font.MONOSPACED, Font.PLAIN,14));
 	        displayList.setEditable(false);
 	        scrollList = new JScrollPane(displayList);
@@ -68,14 +68,15 @@ public class GuiFrame extends JFrame implements ActionListener {
 	 	   eastPanel.setLayout(new GridLayout(6,2)); 
 	 	   eastPanel.add(new JLabel("Update scores"));
 	 	   eastPanel.add(new JLabel(""));
-	 	   eastPanel.add(new JLabel(""));
+	 	
+	 	   
 	 	   eastPanel.add(new JLabel("Enter CN"));
 	 	   searchField1 = new JTextField(5);
 	 	   eastPanel.add(searchField1); 
-	 	   
 	 	   search2 = new JButton("Search");  
-	       eastPanel.add(search2);
+	       eastPanel.add(search2); 
 	       search2.addActionListener(this) ;
+	       
 	       eastPanel.add(new JLabel(""));
 	 	   result3 = new JTextField(10); 
 	 	   eastPanel.add(result3);
@@ -100,6 +101,13 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        eastPanel.add(new JLabel(""));
 	        eastPanel.add(result2);
 	 	   
+	        
+	        eastPanel.add(new JLabel("Enter Level"));
+		 	searchField4 = new JTextField(5);
+		 	eastPanel.add(searchField4); 
+		 	search4 = new JButton("Search");  
+		    eastPanel.add(search4);
+		    search4.addActionListener(this) ;
 	        
 	 	   this.add(eastPanel, BorderLayout.EAST); 
 	    	}
@@ -159,7 +167,9 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        stCompList = new JButton("Show STCompetitor");
 	        stCompList.addActionListener(this);
 	       
-	        
+	        showAllList = new JButton("Show All");
+	        showAllList.addActionListener(this);
+	       
 	        //Close Button
 	        close = new JButton("Close");
 	        close.addActionListener(this);
@@ -171,6 +181,7 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        northPanel.add(vcaCompList);
 	        northPanel.add(shcCompList);
 	        northPanel.add(stCompList);
+	        northPanel.add(showAllList);
 	        northPanel.add(close);
 	        this.add(northPanel, BorderLayout.NORTH);
 	    }
@@ -205,6 +216,9 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    	else if (e.getSource() == stCompList){
 	    		displayList.setText(complist.showstlist());
 	    	}
+	    	else if (e.getSource() == showAllList){
+	    		displayList.setText(complist.showstlist() + "\n \n" + complist.showshclist()+ "\n \n" + complist.showvcalist());
+	    	}
 	    	else if(e.getSource() == search2) {
 	    		//displayList.setText("Show");
 	    		search2();
@@ -217,6 +231,10 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    		JOptionPane.showMessageDialog(this, 
 	    				 "Do 'end of program' things instead of showing this");
 	    		System.exit(0);
+	    	}
+	    	else if (e.getSource() == search4) {
+	    		String input = searchField4.getText().trim();
+	    		displayList.setText(complist.showSetLevel(input));
 	    	}
 	    }  
 	  
@@ -287,4 +305,6 @@ public class GuiFrame extends JFrame implements ActionListener {
 					}
 	 		     
 	 	   }
+	 
+	 	  
 }
