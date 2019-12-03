@@ -11,7 +11,6 @@ public class GuiFrame extends JFrame implements ActionListener {
 	/**
 	 *  The staff list to be searched.
 	 */
-	    The staff list to be searched.
 	    private CompetitorList complist;
 	    
 	/**
@@ -74,7 +73,7 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        this.add(scrollList,BorderLayout.CENTER);
 	    }
 	    /**
-	     * Set up the east panel. All labels, search buttons and result windows are added.
+	     * Set up the east panel. All labels, search buttons and result windows are added. <p>
 	     * Set up the update button in order to update the scores
 	     * Set up the search button to sort competitors by their level
 	     * @param 	search2 the search button2 
@@ -84,6 +83,7 @@ public class GuiFrame extends JFrame implements ActionListener {
 	     * @param 	search4 the search button3
 	     */
 	    private void setupEastPanel() {
+	    	//east panel contains label 
 	 	   JPanel eastPanel = new JPanel();
 	 	   eastPanel.setLayout(new GridLayout(6,2)); 
 		    
@@ -91,52 +91,69 @@ public class GuiFrame extends JFrame implements ActionListener {
 	 	   eastPanel.add(new JLabel(""));
 	 	   eastPanel.add(new JLabel(""));
 	 	   eastPanel.add(new JLabel(""));
-		    
+	 	   
+	 	   //east panel contains label, text field and search2 button 
 	 	   eastPanel.add(new JLabel("Enter CN"));
 	 	   searchField1 = new JTextField(5);
 	 	   eastPanel.add(searchField1); 
 	 	   search2 = new JButton("Search");  
-	           eastPanel.add(search2); 
-	           search2.addActionListener(this);
-		    
+	       eastPanel.add(search2); 
+	       
+	       //specify action when search2 button is pressed
+	       search2.addActionListener(this);
+	       
+	       //Set up the area where the result3 will be displayed. 
 	 	   result3 = new JTextField(10); 
 	 	   eastPanel.add(result3);
 		   result3.setEditable(false);
-		    
+		   
+		  //east panel contains label and text field
 	 	   eastPanel.add(new JLabel("game (1 to 5)"));
 	 	   searchField2 = new JTextField(5);
 	 	   eastPanel.add(searchField2); 
 	 	   eastPanel.add(new JLabel(""));
 	 	   eastPanel.add(new JLabel(""));
-		    
+		   
+	 	  //east panel contains label and text field 
 	 	   eastPanel.add(new JLabel("score"));
 	 	   searchField3 = new JTextField(5);
 	 	   eastPanel.add(searchField3); 
-		    
-	 	   result2 = new JTextField(10);     
-	           result2.setEditable(false);
-		    
-	 	   update = new JButton("Update");  
-	           eastPanel.add(update); 
-	           update.addActionListener(this);
-	           eastPanel.add(result2);
 	 	   
-	      
+	 	   //Set up the area where the results will be displayed. 
+	 	   result2 = new JTextField(10);     
+	       result2.setEditable(false);
+	       
+	       //east panel contains update button and result2
+	 	   update = new JButton("Update");  
+	       eastPanel.add(update); 
+	       update.addActionListener(this);
+	       eastPanel.add(result2);
+	 	   
+	     //east panel contains label
 	        eastPanel.add(new JLabel ("Competitors by Level"));
 	        eastPanel.add(new JLabel(""));
-		eastPanel.add(new JLabel(""));
-		eastPanel.add(new JLabel("")); 
+		    eastPanel.add(new JLabel(""));
+		    eastPanel.add(new JLabel("")); 
 	        eastPanel.add(new JLabel("Enter Level"));
-		     
+	        
+	     //east panel containstext field and search4 button    
 		 searchField4 = new JTextField(5);
 		 eastPanel.add(searchField4); 
 		 search4 = new JButton("Search");  
 		 eastPanel.add(search4);
+		 
+		//specify action when button is pressed
 		 search4.addActionListener(this) ;
-	        
+		 
+		//add east panel to the content pane  
 	 	 this.add(eastPanel, BorderLayout.EAST); 
 	    	}
-	 	    
+	    
+	    /**
+	     * Set up the south panel. All labels, search buttons and result windows are added.
+	     * @param 	search the search button 
+	     * @param 	result the result from search
+	     */    
 	    private void setupSouthPanel() {
 	        //search panel contains label, text field and button
 	        JPanel searchPanel = new JPanel();
@@ -163,8 +180,25 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        this.add(southPanel, BorderLayout.SOUTH);   	
 	    }
 	    
+	    /**
+	     * Set up the north panel. 
+	     * Sorting buttons are added.
+	     * Competitors are sorted regarding particular attributes
+	     * Closing buttons is added.
+	     * @param 	ListByIdAsc the button to sort competitors by Id in ascending order
+	     * @param 	ListByIdDes the button to sort competitors by Id in descending order
+	     * @param 	showListByName the button to sort competitors by Name
+	     * @param 	showLevel the button to sort competitors by level
+	     * @param 	OverallScoreAsc the button to sort competitors by overall score in ascending order
+	     * @param 	OverallScoreDes the button to sort competitors by overall score in descending order
+	     * @param 	vcaCompList the button to see competitors in VCACompetitor list
+	     * @param 	shcCompList the button to see competitors in SHCCompetitor list
+	     * @param   stCompList the button to see competitors in STCompetitor list
+	     * @param   showAllList the button to see all competitors 
+	     * @param   Close the close button
+	     */
 	    private void setupNorthPanel() {
-	        //add north panel containing some buttons
+	       //add north panel containing some buttons
 	        JPanel northPanel = new JPanel(new GridLayout(2,5));
 	        
 	      //JButton lists competitors by id in ascending order 
@@ -226,7 +260,11 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        this.add(northPanel, BorderLayout.NORTH);
 	    }
 	    
-	    
+	    /**
+	     * Set up the action events
+	     * After clicking any action button by the user the
+	     * GUI gives an output 
+	     */    
 	    //come here when button is clicked
 	    //find which button and act accordingly
 	    public void actionPerformed(ActionEvent e) 
@@ -283,7 +321,15 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    		displayList.setText(complist.showSetLevel(input));
 	    	}
 	    }  
-	  
+	    /**
+	     * Set up the search method by entering id 
+	     * The output shows the short details for that particular competitor
+	     * If the id is not in the list or not found the output window shows "not found" message
+	     * If the search button is action without any CN, the output window shows "no text entered"
+	     * Catches trying to convert a String to an integer
+	     * @param 	search the search button 
+	     * @param 	result the result from search
+	     */    
 	    private void search() {
 	    	//get search text and search comp list
 	    	//setting result text 
@@ -301,13 +347,20 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        else
 	        	result.setText("no text entered");
 	    	}	
-	    
+	    	   
 		catch (NumberFormatException nfe) {
 			String error = "Number conversion error " + nfe.getMessage();
 			System.out.println(error);
 			}
 		}
-	    	
+	    /**
+	     * Set up the update method to update the scores 
+	     * Get game number to find the index of the score array. From 1 to 5
+	     * Get the new score
+	     * The output shows the overall score after update any new entry
+	     * If the id is not in the list or not found the output shows "CN not valid" message
+	     * Catches trying to convert a String to an integer 
+	     */    	
  		private void update() {
 	 		  try {
 	 		   String searchString1 = searchField1.getText().trim();
@@ -329,7 +382,14 @@ public class GuiFrame extends JFrame implements ActionListener {
 				}
 	 	   }
 	 	   	   
-	 	   
+ 		/**
+	     * Set up the search method to show the scoreArray of the id entered
+	     * Get CN
+	     * Show the scoreArray for that particular competitor
+	     * If the CN is not in the list or not found the output window shows "not found" message
+	     * If the search button is action without any CN, the output window shows "no text entered"
+	     * Catches trying to convert a String to an integer 
+	     */    	
 	 	   private void search2() {
 	 		  try {
 	 		   String searchString1 = searchField1.getText().trim();
@@ -354,5 +414,6 @@ public class GuiFrame extends JFrame implements ActionListener {
 	 
 	 	  
 }
+
 
 
