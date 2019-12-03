@@ -79,27 +79,7 @@ public class CompetitorList {
 	     * Demonstrates traversing the array, getting one element at a time
 	     * @return report
 	     */ 
-	  /*public String getStatistical(){
-	    	 
-	    String report = "";
-		//Title of table
-			report += String.format("%-4s", "CN");
-			report += String.format("%-30s", "Name");
-			report += String.format("%-8s", "Level");
-			report += String.format("%-20s", "Scores");
-			report += "\n";
-	     for (Competitor c : competitorList) {
-	    		report += String.format("%-4s", c.getCompNumber());
-			report += String.format("%-12s", c.getCompName().getInitials());
-	    		report += String.format("%-8.1s", c.getMaxScore());
-			report += String.format("%-8.1s", c.getMinScore());
-			report += String.format("%-8.2f", c.getOverallScore());
-			report += String.format("%-8.2f", c.getTotals());
-			report += "\n";
-	    	 }
-	     return report;
-	    }
-	  */
+
 	     /**
 	      * return the higher average in the competition
 	      * @return maximum score 
@@ -128,24 +108,7 @@ public class CompetitorList {
 		 return null;
 		}
 	  
-			/**
-			 * returns the competitor who result the winner in his level
-			 * @param level
-			 * @return competitor  if competitor is in  the list,
-			 	* return null if is not
-			 */
-	  /**public Competitor getWinNameByLevel(int level) {
-				
-		  for (Competitor c : competitorList) {
-			   if (c.getLevel() == level){
-			   if (c.getOverallScore() == this.getWinnerAvg()) {
-			  return c;
-			  }
-			}
-		  }
-		  return null;
-		}
-	  */
+
 			/**
 			 * returns the number of elements in the list			
 			 * @return size
@@ -178,28 +141,14 @@ public class CompetitorList {
 		  return null;
 		}
 			
-			/**
-			 * counts the number of competitors in a specified level
-			 * @param level
-			 * @return count of Competitors at requested level
-			 */
-//	  public int getCountOfCompetitorsAtLevel(int level) {
-//		  int count = 0;
-//			  for (Competitor c:CompetitorList) {
-//			     if (c.getLevel()==level) {
-//					 count++;}
-//				}
-//			 return count;
-//			}
-
-
 //Show Level & ID for GUI	  
 		public String showLevel(){
 			String list = ""; int i = 0;
 			for (Competitor c  : CompetitorList) {
 			if (i == 0){
 				list += String.format("%-4s", "CN");
-				list += String.format("%-15s", "Level \n");
+				list += String.format("%-15s", "Level");
+				list += "\n";
 			}	
 			list += String.format("%-4s", c.getCompetitorNumber());
 			list += String.format("%-15s", c.getLevel());
@@ -215,7 +164,8 @@ public class CompetitorList {
 			for (Competitor c  : CompetitorList) {
 				if (i == 0){
 					list += String.format("%-4s", "CN");
-					list += String.format("%-10s", "Overall Score \n");
+					list += String.format("%-10s", "Overall Score");
+					list += "\n";
 				}	
 				list += String.format("%-4s", c.getCompetitorNumber());
 				list += String.format("%-10.2f", c.getOverallScore());
@@ -226,31 +176,25 @@ public class CompetitorList {
 		
 	    public String listDetails()
 	    {
-	    	String allEntries = " ";
+	    	String allEntries = "CN  Surname   Forename   Middlename";
 	        for(Competitor c : CompetitorList) {
-	        	
+	        	allEntries += "\n";
 	        	allEntries += String.format("%-4s", c.getCompetitorNumber());
 	        	allEntries += String.format("%-10s",c.getCompName().getLastName());
-	        	allEntries += "," + String.format("%-10s", c.getCompName().getFirstName()) + String.format("%-10s", c.getCompName().getMiddleName());
-	        	allEntries += "\n";
+	        	allEntries += String.format("%-10s", c.getCompName().getFirstName()) + String.format("%-10s", c.getCompName().getMiddleName());
 	        }
 	        return allEntries;
 	    }
 		
-		 /**
-	     * @return All the staff details in name order
-	     */
+
 	    public String listByName()
 	    {
 	    	Collections.sort(CompetitorList, new NameComparator());
 	    	return this.listDetails();
 	    }
-	    
-	    /**
-	     * @return All the staff details in id order
-	     */
+
 	    public String CNList() { 
-			  String list ="";
+			  String list ="CN  NAME";
 			  List<Double> CNList = new ArrayList();
 			  int NoComps = CompetitorList.size();
 			  for (Competitor c  : CompetitorList) {
@@ -263,9 +207,9 @@ public class CompetitorList {
 				  int CNint = (int) Math.round(CNdouble);
 				  for (Competitor n : CompetitorList) {
 						 if (n.getCompetitorNumber() == (CNint)){ 
-							 list += String.format("%-4s", n.getCompetitorNumber());
-							 list += String.format("%-20s",n.getCompName().getFullName());
 							 list += "\n";
+							 list += String.format("%-4s", n.getCompetitorNumber());
+							 list += String.format("%-20s",n.getCompName().getFullName());							 
 							}
 						}
 				  }  
@@ -283,7 +227,8 @@ public class CompetitorList {
 						vlist += String.format("%-30s", "Name");
 						vlist += String.format("%-15s", "Level");
 						vlist += String.format("%-20s", "Scores");
-						vlist += String.format("%-10s", c.getAttributeName()+" \n");
+						vlist += String.format("%-10s", c.getAttributeName());
+						vlist += "\n";
 						i++;
 				  		}
 						vlist += String.format("%-4s", c.getCompetitorNumber());
@@ -308,7 +253,8 @@ public class CompetitorList {
 						sclist += String.format("%-30s", "Name");
 						sclist += String.format("%-15s", "Level");
 						sclist += String.format("%-20s", "Scores");
-						sclist += String.format("%-10s", c.getAttributeName()+" \n");
+						sclist += String.format("%-10s", c.getAttributeName());
+						sclist += "\n";
 						i++;
 				  		}
 						sclist += String.format("%-4s", c.getCompetitorNumber());
@@ -321,7 +267,7 @@ public class CompetitorList {
 			 }
 		  return sclist;	
 		  }
-	  //Method return the competitor details in SHCCompetitor
+	  //Method return the competitor details in STCompetitor
 	    //By Sheron
 	  public String showstlist(){
 		    String slist = ""; 
@@ -333,7 +279,8 @@ public class CompetitorList {
 						slist += String.format("%-30s", "Name");
 						slist += String.format("%-15s", "Level");
 						slist += String.format("%-20s", "Scores");
-						slist += String.format("%-10s", c.getAttributeName()+" \n");
+						slist += String.format("%-10s", c.getAttributeName());
+						slist += "\n";
 						i++;
 				  		}
 						slist += String.format("%-4s", c.getCompetitorNumber());
