@@ -173,7 +173,7 @@ public class CompetitorList {
 			}
 			return list;	
 		}
-		
+				
 	    public String listDetails()
 	    {
 	    	String allEntries = "CN  Surname   Forename   Middlename";
@@ -191,6 +191,18 @@ public class CompetitorList {
 	    {
 	    	Collections.sort(CompetitorList, new NameComparator());
 	    	return this.listDetails();
+	    }
+	    
+	    public String listByOverallScore()
+	    {
+	    	Collections.sort(CompetitorList, new OverallScoreComparator());
+	    	return this.showOverallScore();
+	    }
+	    
+	    public String listByOverallScoreR()
+	    {
+	    	Collections.sort(CompetitorList, new OverallScoreComparator().reversed());
+	    	return this.showOverallScore();
 	    }
 
 	    public String CNList() { 
@@ -214,7 +226,31 @@ public class CompetitorList {
 						}
 				  }  
 			  return list;
-	} 
+	}
+	    public String CNListR() { 
+			  String list ="CN  NAME";
+			  List<Double> CNList = new ArrayList();
+			  int NoComps = CompetitorList.size();
+			  for (Competitor c  : CompetitorList) {
+				 double n = c.getCompetitorNumber();
+				 CNList.add(n);			
+				}
+			  Collections.sort(CNList);
+			  for (int i = 0; i < NoComps; i++){
+				  int iter = NoComps - i - 1;
+				  double CNdouble = CNList.get(iter);
+				  int CNint = (int) Math.round(CNdouble);
+				  for (Competitor n : CompetitorList) {
+						 if (n.getCompetitorNumber() == (CNint)){ 
+							 list += "\n";
+							 list += String.format("%-4s", n.getCompetitorNumber());
+							 list += String.format("%-20s",n.getCompName().getFullName());							 
+							}
+						}
+				  }  
+			  return list;
+	}
+	    
 	  //Method return the competitor details in VCACompetitor 
 	    //By Sheron
 	  public String showvcalist(){
@@ -393,6 +429,3 @@ public class CompetitorList {
 			}
 			
 }
-
-
-
