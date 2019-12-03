@@ -12,6 +12,10 @@ public class VCACompetitor extends Competitor{
 	public String getAttribute() {
 		return nationality;
 	}
+	public String getAttributeName() {
+		return "Nationality";
+	}
+	
 	
 	public void addScore(int value,  int ass ) {
 		int index = ass-1;
@@ -20,7 +24,7 @@ public class VCACompetitor extends Competitor{
 	}
 	
 	public int getMaxScore() {
-		int max = scores[0];
+		int max = 0;
 		int[] Scores = super.getScoreArray();
 		for (int index = 1; index <Scores.length; index++) 
 		{
@@ -32,7 +36,7 @@ public class VCACompetitor extends Competitor{
 	}
 	
 	public int getMinScore() {
-		int min = scores[0];
+		int min = 0;
 		int[] Scores = super.getScoreArray();
 		for (int index = 1; index < Scores.length; index++) {
 			if (Scores[index] < min) {
