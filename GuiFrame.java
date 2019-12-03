@@ -3,16 +3,20 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.util.Arrays;
 
-public class GuiFrame extends JFrame implements ActionListener {
-
-	/**
+/**
 	 * GUI Frame for CompetitorList
 	 */
-
-	    // The staff list to be searched.
+public class GuiFrame extends JFrame implements ActionListener {
+	
+	/**
+	 *  The staff list to be searched.
+	 */
+	    The staff list to be searched.
 	    private CompetitorList complist;
 	    
-	    //GUI components
+	/**
+	 * GUI  components
+	 */
 	    JTextField  [] scoresF;
 	    JTextField result, result2, result3;
 	    
@@ -38,7 +42,9 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    {
 	        this.complist = list;
 	        
-	        //set up window title
+	    /**
+	    *  set up window title
+	    */    
 	        setTitle("Competitor List");
 	        //disable standard close button
 			setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
@@ -48,12 +54,18 @@ public class GuiFrame extends JFrame implements ActionListener {
 			setupWestPanel();
 			setupEastPanel();
 
-	        //pack and set visible
+            /**
+	    *  pack and set visible
+	    */    
 	        pack();
 	        setVisible(true);
 	        
 	    }
 	    
+	     /**
+	     * Create the west panel.
+	     * @param 	The west panel to be displayed.
+	     */
 	    private void setupWestPanel() {
 	        displayList = new JTextArea(15,100);
 	        displayList.setFont(new Font (Font.MONOSPACED, Font.PLAIN,14));
@@ -61,50 +73,49 @@ public class GuiFrame extends JFrame implements ActionListener {
 	        scrollList = new JScrollPane(displayList);
 	        this.add(scrollList,BorderLayout.CENTER);
 	    }
-	    
+	    /**
+	     * Set up the east panel. All labels, search buttons and result windows are added.
+	     * Set up the update button in order to update the scores
+	     * @param 	search2 the search button2 
+	     * @param 	result3 the result from search2
+	     * @param 	result2 the result 
+	     * @param 	update the result from result2
+	     */
 	    private void setupEastPanel() {
-	    //search panel contains label
 	 	   JPanel eastPanel = new JPanel();
 	 	   eastPanel.setLayout(new GridLayout(6,2)); 
+		    
 	 	   eastPanel.add(new JLabel("Update scores"));
-	 	   
 	 	   eastPanel.add(new JLabel(""));
 	 	   eastPanel.add(new JLabel(""));
 	 	   eastPanel.add(new JLabel(""));
-	 	//search panel contains label, text field and button
+		    
 	 	   eastPanel.add(new JLabel("Enter CN"));
 	 	   searchField1 = new JTextField(5);
 	 	   eastPanel.add(searchField1); 
 	 	   search2 = new JButton("Search");  
-	       eastPanel.add(search2); 
-	     //specify action when button is pressed
-	       search2.addActionListener(this) ;
-	     //Set up the area where the results will be displayed.
+	           eastPanel.add(search2); 
+	           search2.addActionListener(this) ;
 	 	   result3 = new JTextField(10); 
 	 	   eastPanel.add(result3);
-	 	   result3.setEditable(false);
-	 
-	 	//search panel contains label, text field and button
+		   result3.setEditable(false);
+		    
 	 	   eastPanel.add(new JLabel("game (1 to 5)"));
 	 	   searchField2 = new JTextField(5);
 	 	   eastPanel.add(searchField2); 
-	 	
 	 	   eastPanel.add(new JLabel(""));
 	 	   eastPanel.add(new JLabel(""));
-	 	//search panel contains label, text field and button
+		    
 	 	   eastPanel.add(new JLabel("score"));
 	 	   searchField3 = new JTextField(5);
 	 	   eastPanel.add(searchField3); 
-	 	   
-	 	//Set up the area where the results will be displayed.
 	 	   result2 = new JTextField(10);     
-	       result2.setEditable(false);
-	       
-	     //search panel contains label, text field and button  
-	 	    update = new JButton("Update");  
-	        eastPanel.add(update); 
-	        update.addActionListener(this);
-	        eastPanel.add(result2);
+	           result2.setEditable(false);
+		    
+	 	   update = new JButton("Update");  
+	           eastPanel.add(update); 
+	           update.addActionListener(this);
+	           eastPanel.add(result2);
 	 	   
 	      //search panel contains label
 	        eastPanel.add(new JLabel ("Competitors by Level"));
