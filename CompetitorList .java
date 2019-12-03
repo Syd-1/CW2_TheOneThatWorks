@@ -171,7 +171,9 @@ public class CompetitorList {
 			list += String.format("%-15s", c.getLevel());
 			list += "\n"; 
 				}
-			}	
+			}
+			return list;
+		}
 		
 		//Show OverallScore & ID for GUI	
 		public String showOverallScore(){
