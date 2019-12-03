@@ -37,10 +37,12 @@ public class Name {
 		}
   }
   
+ //returns the first name, middle name and last name
   public String getFirstName() { return firstName; }
   public String getMiddleName() { return middleName; }
   public String getLastName() { return lastName; }
-  
+	
+ //change the first name, middle name and last name to the value provided in the parameter 
   public void setFirstName(String fn) {
 	  firstName = fn;
   }
@@ -51,15 +53,16 @@ public class Name {
 	  lastName = ln;
   }
   
+  //returns the first name then a space then the last name
   public String getFirstAndLastName() {
 		return firstName + " " + lastName;
   }
-  
+  //returns the last name followed by a comma then a space then the first name
   public String getLastCommaFirst() {
 		return lastName + ", "+ firstName;
   }
   
-
+ //returns the full name
   public String getFullName() {
 	  String result = firstName + " ";
 	  if (!middleName.equals("")) {
@@ -87,6 +90,7 @@ public class Name {
 		  result = inital1 + inital2 + inital3;} 
 	 return result;
   }
+ //Added to compare to other name
      public int compareTo(Name other){
 	  String thisName = lastName + " " + firstName + " " + middleName;
 	  String othername = other.lastName + " " + other.firstName + " " + other.middleName;
