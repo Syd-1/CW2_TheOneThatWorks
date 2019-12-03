@@ -158,6 +158,22 @@ public class CompetitorList {
 			return list;
 		}	
 		
+		//Show Level & ID for GUI	  
+				public String showSetLevel(String input){
+					String list = ""; 
+					list += String.format("%-4s", "CN");
+					list += String.format("%-15s", "Level");
+					list += "\n";
+					for (Competitor c  : CompetitorList) {
+					if (input == c.getLevel()){						
+					list += String.format("%-4s", c.getCompetitorNumber());
+					list += String.format("%-15s", c.getLevel());
+					list += "\n"; 
+						}
+					}
+					return list;
+				}	
+		
 		//Show OverallScore & ID for GUI	
 		public String showOverallScore(){
 			String list = ""; int i = 0;
@@ -429,3 +445,6 @@ public class CompetitorList {
 			}
 			
 }
+
+
+
