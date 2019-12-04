@@ -312,8 +312,13 @@ public class GuiFrame extends JFrame implements ActionListener {
 	    		update();
 	    	}
 	    	else if (e.getSource() == close) {
-	    	//	JOptionPane.showMessageDialog(this, 
-	    	//			 "Do 'end of program' things instead of showing this");
+	    		//show 'end of program' before closing file
+	    		JOptionPane.showMessageDialog(this, 
+	    				 "Do 'end of program' things instead of showing this");
+	    		//get the report with short detail from competitor list
+	    		String report = complist.getCompetitorReport();
+	    		//Write the report to a text file 'Allcompetitor_report.txt'
+	    		complist.writeToFile("Allcompetitor_report.txt", report);
 	    		System.exit(0);
 	    	}
 	    	else if (e.getSource() == search4) {
