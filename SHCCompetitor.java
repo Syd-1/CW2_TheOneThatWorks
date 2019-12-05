@@ -38,21 +38,6 @@ public class SHCCompetitor extends Competitor{
 		for (int i = 0; i < scores.length-1; i++) {
 			sumScore += scores[i];}				
 		return (double) Math.round(sumScore*(11-level)*5/20)/10; 		
-	}
-	
-	//Calculate score array
-//	public int[] scoreArray() {
-//		int[] sA = new int[scores.length()];
-//		for (int i = 0; i < scores.length(); i++) {
-//			sA[i] = Character.getNumericValue(scores.charAt(i));
-//			}
-//		return sA;		
-//	}
-//	//Score array in report format
-//	public String getScoreArray() {
-//	return Arrays.toString(scoreArray()).replaceFirst("]", "").replace("[", "");}
-	
-
-
+	}	
 	
 }
