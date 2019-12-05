@@ -1,4 +1,7 @@
-
+/**
+     * Subclass VCACompetitor, Extends from the superclass "Competitor"
+     * @param 	nationality The attribute	
+     */ 
 public class VCACompetitor extends Competitor{
 		
 	private String nationality;
